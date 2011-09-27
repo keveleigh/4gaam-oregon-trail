@@ -29,9 +29,11 @@ public class Person2 {
 	 * @param input the string to be modified
 	 * @return the modified string
 	 */
-	private String calc(String input) {
-	  //Person 2 put your implementation here
-	  return null;
+	private String calc(String input) 
+	{
+		
+		return input;
+		
 	}
 	/**
 	 * Return a string rep of this object
