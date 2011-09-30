@@ -24,14 +24,22 @@ public class Person5 {
 	 * input and return its characters rotated
 	 * 3 positions.
 	 * given "gtg123b" it should return
-	 * "123bgtg".
+	 * "123bgtg". 
 	 *
 	 * @param input the string to be modified
 	 * @return the modified string
 	 */
 	private String calc(String input) {
-	  //Person 5 put your implementation here
-	  return null;
+		if (input == null || input.length() == 0 || input.length() == 1 || input.length() == 3) {
+			// return the same exact string
+			return input;
+		} else if (input.length() == 2) {
+			// return string with characters switched
+			return input.substring(1) + input.substring(0, 1);
+		} else {
+			// rotate the characters
+			return input.substring(3) + input.substring(0, 3);
+		}
 	}
 	
 	/**
@@ -47,3 +55,4 @@ public class Person5 {
 	}
 
 }
+
