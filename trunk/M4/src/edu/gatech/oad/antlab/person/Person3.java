@@ -47,8 +47,6 @@ public class Person3 {
 	  {
 		  reverse = reverse + input.substring(i,i+1);
 	  }
-	  System.out.println(input);
-	  System.out.println(reverse);
 	  return reverse;
 	}
 }
