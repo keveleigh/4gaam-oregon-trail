@@ -1,30 +1,35 @@
-<project name="Milestone 4" default="all">
-	<target name="init" description="Sets up properties.">
+
+
+<project name="M4" default="all">
+	<description>
+		ant build file for M4
+	</description>
+	
+	<target name ="init" depends="" description="Sets up properties.">
+		<!-- Create the time stamp -->
+		<tstamp/>
 		<property name="src" location="src"/>
 		<property name="build" location="build"/>
 		<property name="apidoc" location="apidoc"/>
 	</target>
 
-	<target name="prepare" depends="init" description ="Creates required directories.">
+	<target name="prepare" depends="init" description ="Prepares and created directories for build and apidoc">
 		<mkdir dir="${build}"/>
 		<mkdir dir="${apidoc}"/>
 	</target>
 
-	<target name="compile" depends="prepare" description ="Compiles all java classes.">
+	<target name="compile" depends="prepare" description ="Compiles the classes and buildes files">
 		<javac srcdir="${src}" destdir="${build}" extdirs="lib" includeantruntime="false"/>
 	</target> 
 
-	<target name="javadoc" depends="compile" description ="Generates the javadoc documentation.">
-		<javadoc sourcepath="${src}" access="public" destdir="${apidoc}" extdirs="lib">
-			<bottom>
-				<![CDATA[<i>Copyright &#169; 2011 Team 4 Guys and a Mann - CS 2340.  All Rights Reserved.</i>]]>
-		    </bottom>
+	<target name="javadoc" depends="compile" description ="Creates javadoc and stores it in the apidoc directory">
+		<javadoc sourcepath="${src}" destdir="${apidoc}" extdirs="lib">
 		</javadoc>
 	</target>
 
-	<target name="jar" depends="javadoc" description ="Packages the compiled classes a .jar file.">
+	<target name="jar" depends="compile" description ="Takes the classes and puts them in a jar file">
 		<jar destfile="AntLabRun.jar">
-			<fileset dir="${build}"/>
+			<fileset dir ="${build}"/>
 				<manifest>
 					<attribute name="Main-Class" value="edu.gatech.oad.antlab.pkg1.AntLabMain"/>
 					<attribute name="Class-Path" value="lib/resources.jar"/>
@@ -32,15 +37,18 @@
 		</jar>
 	</target>
 
-	<target name="run" depends="jar" description ="Runs the jar of compiled classes.">
+	<target name="run" depends="javadoc" description ="Runs the jar of compiled classes.">
 		<java jar="AntLabRun.jar" fork="true"/>
 	</target>
 
 	<target name="all" depends="run" description ="Performs all tasks except clean."/>
 
-	<target name="clean" depends="init" description ="Removes all files created.">
+	<target name="clean" depends="init" 
+			description ="Removes all files created.">
+		<!-- Delete the ${build} and ${apidoc} directory trees -->
 		<delete dir="${build}"/>
 		<delete dir="${apidoc}"/>
 		<delete file="AntLabRun.jar"/>
 	</target>
+	
 </project>
