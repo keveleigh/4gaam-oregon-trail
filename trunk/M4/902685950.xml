@@ -1,16 +1,16 @@
 <project name="Milestone 4" default="all">
-	<target name="init" description="Sets up properties.">
+	<target name="init" description="Sets up the properties.">
 		<property name="src" location="src"/>
 		<property name="build" location="build"/>
 		<property name="apidoc" location="apidoc"/>
 	</target>
 
-	<target name="prepare" depends="init" description ="Creates required directories.">
+	<target name="prepare" depends="init" description ="Creates the required directories.">
 		<mkdir dir="${build}"/>
 		<mkdir dir="${apidoc}"/>
 	</target>
 
-	<target name="compile" depends="prepare" description ="Compiles all java classes.">
+	<target name="compile" depends="prepare" description ="Compiles all the java classes.">
 		<javac srcdir="${src}" destdir="${build}" extdirs="lib" includeantruntime="false"/>
 	</target> 
 
@@ -22,7 +22,7 @@
 		</javadoc>
 	</target>
 
-	<target name="jar" depends="javadoc" description ="Packages the compiled classes a .jar file.">
+	<target name="jar" depends="javadoc" description ="Packages all the compiled classes / a .jar file.">
 		<jar destfile="AntLabRun.jar">
 			<fileset dir="${build}"/>
 				<manifest>
@@ -32,13 +32,13 @@
 		</jar>
 	</target>
 
-	<target name="run" depends="jar" description ="Runs the jar of compiled classes.">
+	<target name="run" depends="jar" description ="Runs the jar of the compiled classes.">
 		<java jar="AntLabRun.jar" fork="true"/>
 	</target>
 
-	<target name="all" depends="run" description ="Performs all tasks except clean."/>
+	<target name="all" depends="run" description ="Performs all the tasks except clean."/>
 
-	<target name="clean" depends="init" description ="Removes all files created.">
+	<target name="clean" depends="init" description ="Removes all files that were created.">
 		<delete dir="${build}"/>
 		<delete dir="${apidoc}"/>
 		<delete file="AntLabRun.jar"/>
