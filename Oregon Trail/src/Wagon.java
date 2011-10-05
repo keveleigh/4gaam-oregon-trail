@@ -9,7 +9,6 @@ public class Wagon
 	{
 		currPace = Pace.Steady;
 		currRations = Rations.Filling;
-		
 	}
 
 	public Pace getCurrPace() 

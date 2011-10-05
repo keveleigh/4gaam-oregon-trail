@@ -5,6 +5,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
+
+import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.BoxLayout;
@@ -164,5 +166,22 @@ public class configurationScreen extends JFrame {
 		lblNewLabel_5.setIcon(new ImageIcon(configurationScreen.class.getResource("/configurationScreen/resources/oregon_trail_25 - Copy.gif")));
 		lblNewLabel_5.setBounds(278, 175, 326, 164);
 		contentPane.add(lblNewLabel_5);
+		
+		ButtonGroup rationGroup = new ButtonGroup();
+		ButtonGroup paceGroup = new ButtonGroup();
+		ButtonGroup professionGroup = new ButtonGroup();
+		
+		rationGroup.add(rdbtnNewRadioButton_4);
+		rationGroup.add(rdbtnMeager);
+		rationGroup.add(rdbtnFilling);
+		
+		paceGroup.add(rdbtnNewRadioButton_3);
+		paceGroup.add(rdbtnSteady);
+		paceGroup.add(rdbtnGrueling);
+		
+		professionGroup.add(rdbtnNewRadioButton);
+		professionGroup.add(rdbtnNewRadioButton_1);
+		professionGroup.add(rdbtnNewRadioButton_2);
+		
 	}
 }
