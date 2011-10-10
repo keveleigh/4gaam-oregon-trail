@@ -1,7 +1,6 @@
 public class Wagon 
 {
-	private enum Pace {Leisurely, Steady, Grueling};
-	private enum Rations {Filling, Meager, BareBones};
+
 	private Pace currPace;
 	private Rations currRations;
 	
@@ -9,6 +8,7 @@ public class Wagon
 	{
 		currPace = Pace.Steady;
 		currRations = Rations.Filling;
+		System.out.println("Wagon created");
 	}
 
 	public Pace getCurrPace() 
@@ -19,6 +19,7 @@ public class Wagon
 	public void setCurrPace(Pace currPace) 
 	{
 		this.currPace = currPace;
+		System.out.println("Pace set to " + getCurrPace());
 	}
 
 	public Rations getCurrRations() 
@@ -29,6 +30,7 @@ public class Wagon
 	public void setCurrRations(Rations currRations) 
 	{
 		this.currRations = currRations;
+		System.out.println("Rations set to " + getCurrRations());
 	}
 
 
