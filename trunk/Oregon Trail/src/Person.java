@@ -2,7 +2,6 @@
 public class Person 
 {
 	private String name;
-	private enum Health {Excellent, Fair, Poor} //there will be more states
 	Health myHealth;
 	
 	public Person(String n)
