@@ -151,7 +151,8 @@ public class configurationScreen extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+		setResizable(false);
+                
 		goButton = new JButton("Begin Journey on the Oregon Trail");
 		goButton.setBounds(34, 325, 227, 20);
 		contentPane.add(goButton);
@@ -432,6 +433,8 @@ public class configurationScreen extends JFrame {
 				myWagon.setCurrRations(Rations.Filling);
 			else if (meager)
 				myWagon.setCurrRations(Rations.Meager);
+                        
+                        dispose();
 			}	
 		}
 	}
