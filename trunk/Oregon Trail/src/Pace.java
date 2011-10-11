@@ -10,12 +10,15 @@ public enum Pace
 {
 	
 	/** The Leisurely Pace*/
+	//goes 20 miles per turn
 	Leisurely, 
 	
 	/** The Steady Pace */
+	//goes 27 miles per turn
 	Steady, 
 	
 	/** The Grueling Pace */
+	//goes 32 miles per turn
 	Grueling;
 
 }
