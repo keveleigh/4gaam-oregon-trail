@@ -10,8 +10,12 @@ public class Clothes extends Item {
 
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		// Check to make sure quantity is greater than 0
+		if (quantity > 0) {
+			
+			// Decrease quantity
+			decrement();
+		}
 	}
 
 }
