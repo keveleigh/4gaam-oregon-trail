@@ -29,5 +29,10 @@ public abstract class Item {
 		quantity = newQuan;
 	}
 	
+	public void decrement() {
+		if (quantity > 0)
+			quantity--;
+	}
+	
 	public abstract void use();
 }
