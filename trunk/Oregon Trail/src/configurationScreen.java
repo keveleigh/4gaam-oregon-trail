@@ -19,45 +19,113 @@ import java.awt.event.ActionListener;
 import javax.swing.JRadioButton;
 import javax.swing.ImageIcon;
 
-
+/**
+ * The Class configurationScreen, which is the first screen of the game.
+ * This screen allows the user to enter a Leader name and Member names as well
+ * as set their profession and the initial pace and rations
+ * 
+ * @author Four Guys and a Mann
+ * @version v1 10/10/11
+ */
 public class configurationScreen extends JFrame {
 
+	/** The content pane. */
 	private JPanel contentPane;
+	
+	/** The text field. */
 	private JTextField textField;
+	
+	/** The text field_1. */
 	private JTextField textField_1;
+	
+	/** The text field_2. */
 	private JTextField textField_2;
+	
+	/** The text field_3. */
 	private JTextField textField_3;
+	
+	/** The text field_4. */
 	private JTextField textField_4;
+	
+	/** The lbl member_2. */
 	private JLabel lblMember_2;
+	
+	/** The lbl member. */
 	private JLabel lblMember;
+	
+	/** The lbl member_1. */
 	private JLabel lblMember_1;
+	
+	/** The lbl new label_2. */
 	private JLabel lblNewLabel_2;
+	
+	/** The lbl set your initial. */
 	private JLabel lblSetYourInitial;
+	
+	/** The rdbtn new radio button_3. */
 	private JRadioButton rdbtnNewRadioButton_3;
+	
+	/** The rdbtn steady. */
 	private JRadioButton rdbtnSteady;
+	
+	/** The rdbtn grueling. */
 	private JRadioButton rdbtnGrueling;
+	
+	/** The rdbtn new radio button_4. */
 	private JRadioButton rdbtnNewRadioButton_4;
+	
+	/** The rdbtn meager. */
 	private JRadioButton rdbtnMeager;
+	
+	/** The rdbtn filling. */
 	private JRadioButton rdbtnFilling;
+	
+	/** The lbl new label_3. */
 	private JLabel lblNewLabel_3;
+	
+	/** The lbl new label_4. */
 	private JLabel lblNewLabel_4;
+	
+	/** The lbl new label_5. */
 	private JLabel lblNewLabel_5;
+	
+	/** The go button. */
 	private JButton goButton;
+	
+	/** The rdbtn new radio button. */
 	private JRadioButton rdbtnNewRadioButton;
+	
+	/** The rdbtn new radio button_1. */
 	private JRadioButton rdbtnNewRadioButton_1;
+	
+	/** The rdbtn new radio button_2. */
 	private JRadioButton rdbtnNewRadioButton_2;
 	
+	/** The my leader. */
 	private Leader myLeader;
-	private Member mem1;
-	private Member mem2;
-	private Member mem3;
-	private Member mem4;
-	private Wagon myWagon = new Wagon();
 	
+	/** The mem1. */
+	private Member mem1;
+	
+	/** The mem2. */
+	private Member mem2;
+	
+	/** The mem3. */
+	private Member mem3;
+	
+	/** The mem4. */
+	private Member mem4;
+	
+	/** The my wagon. */
+	private Wagon myWagon;
+	
+	/** The bare bones. */
 	private boolean banker, farmer, carpenter, steady, leisurely, grueling, filling, meager, bareBones;
 
 	/**
 	 * Launch the application.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -231,8 +299,23 @@ public class configurationScreen extends JFrame {
 		//actionPerformed(goButton);
 	}
 	
+	/**
+	 * The listener interface for receiving profButton events.
+	 * The class that is interested in processing a profButton
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addProfButtonListener<code> method. When
+	 * the profButton event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see ProfButtonEvent
+	 */
 	private class ProfButtonListener implements ActionListener
 	{
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed (ActionEvent event)
 		{
 			
@@ -245,8 +328,22 @@ public class configurationScreen extends JFrame {
 		}
 	}
 	
+	/**
+	 * The listener interface for receiving rationsButton events.
+	 * The class that is interested in processing a rationsButton
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's actionPerformed method. When the rationsButton 
+	 * event occurs, that object's appropriate method is invoked.
+	 *
+	 * @see RationsButtonEvent
+	 */
 	private class RationsButtonListener implements ActionListener
 	{
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed (ActionEvent event)
 		{
 			if (event.getSource() == rdbtnFilling)
@@ -258,8 +355,23 @@ public class configurationScreen extends JFrame {
 		}
 	}
 	
+	/**
+	 * The listener interface for receiving paceButton events.
+	 * The class that is interested in processing a paceButton
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's actionPerformed method. When
+	 * the paceButton event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see PaceButtonEvent
+	 */
 	private class PaceButtonListener implements ActionListener
 	{
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed (ActionEvent event)
 		{
 			if (event.getSource() == rdbtnSteady)
@@ -271,45 +383,59 @@ public class configurationScreen extends JFrame {
 		}
 	}
 	
+	/**
+	 * The listener interface for receiving button events.
+	 * The class that is interested in processing a button
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's actionPerformed method. When
+	 * the button event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see ButtonEvent
+	 */
 	private class ButtonListener implements ActionListener
 	{
 			
-			public void actionPerformed (ActionEvent event)
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
+		public void actionPerformed (ActionEvent event)
+		{
+			if (event.getSource() == goButton)
 			{
-				if (event.getSource() == goButton)
-				{
 					
-				mem1 = new Member(textField_1.getText());
-				mem1 = new Member(textField_2.getText());
-				mem1 = new Member(textField_3.getText());
-				mem1 = new Member(textField_4.getText());
-				
-				myLeader = new Leader(textField.getText());
+			myWagon = new Wagon();
 					
-				if (banker)
-					myLeader = new Leader(textField.getText(), Profession.Banker);
-				else if (carpenter)
-					myLeader = new Leader(textField.getText(), Profession.Carpenter);
-				else if (farmer)
-					myLeader = new Leader(textField.getText(), Profession.Farmer);
+			mem1 = new Member(textField_2.getText());
+			mem2 = new Member(textField_4.getText());
+			mem3 = new Member(textField_1.getText());
+			mem4 = new Member(textField_3.getText());
 				
-				if (steady)
-					myWagon.setCurrPace(Pace.Steady);
-				else if(grueling)
-					myWagon.setCurrPace(Pace.Grueling);
-				else if (leisurely)
-					myWagon.setCurrPace(Pace.Leisurely);
-				
-				if (bareBones)
-					myWagon.setCurrRations(Rations.BareBones);
-				else if(filling)
-					myWagon.setCurrRations(Rations.Filling);
-				else if (meager)
-					myWagon.setCurrRations(Rations.Meager);
+			if (banker)
+				myLeader = new Leader(textField.getText(), Profession.Banker);
+			else if (carpenter)
+				myLeader = new Leader(textField.getText(), Profession.Carpenter);
+			else if (farmer)
+				myLeader = new Leader(textField.getText(), Profession.Farmer);
+			
+			if (steady)
+				myWagon.setCurrPace(Pace.Steady);
+			else if(grueling)
+				myWagon.setCurrPace(Pace.Grueling);
+			else if (leisurely)
+				myWagon.setCurrPace(Pace.Leisurely);
+			
+			if (bareBones)
+				myWagon.setCurrRations(Rations.BareBones);
+			else if(filling)
+				myWagon.setCurrRations(Rations.Filling);
+			else if (meager)
+				myWagon.setCurrRations(Rations.Meager);
 			}	
+		}
 	}
 }
-	}
 
 	
 
