@@ -47,11 +47,11 @@ public class Leader extends Person
 	public void setInitMoney()
 	{
 		if (myProfession.equals(Profession.Farmer))
-			money = 700; //decide real numbers
-		else if (myProfession.equals(Profession.Carpenter))
 			money = 1000; //decide real numbers
+		else if (myProfession.equals(Profession.Carpenter))
+			money = 1200; //decide real numbers
 		else
-			money = 1300; //decide real numbers
+			money = 1500; //decide real numbers
 	}
 	
 	/**
