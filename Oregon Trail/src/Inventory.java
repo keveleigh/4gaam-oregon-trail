@@ -29,9 +29,11 @@ public class Inventory {
 	 */
 	public void add(Item item){
 		for (int index = 0; index <= items.size(); index++){
+			//checks to see if item is already in inventory
 			if (items.get(index) == item){
 				item.quantity++;
 			}
+			//if item isn't in inventory yet
 			else if (items.size()+1 == index){
 				items.add(item);
 			}
