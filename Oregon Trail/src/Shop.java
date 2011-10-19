@@ -34,8 +34,10 @@ public class Shop
 	/**
 	 * Instantiates a new shop.
 	 */
-	public Shop()
+	public Shop(Leader l, Inventory in)
 	{
+		myLeader = l;
+		playerInventory = in;
 		a = new Axle();
 		b = new Bullets();
 		c = new Clothes();
@@ -53,11 +55,11 @@ public class Shop
 	 * @param quant the quantity
 	 * @return true, if successful
 	 */
-	public boolean buy(Item i, int quant)
+	public void buy(Item i, int quant)
 	{
 		//adds the quantity of items to the players inventory
 		
-		if (checkWeight(i, quant) == true && checkMoney(i, quant) == true)
+		if (tryBuy(i, quant) == true)
 		{
 			for (int j = 1; j <= quant; j++)
 				playerInventory.add(i);
@@ -68,8 +70,13 @@ public class Shop
 			//changes the players inventory weight
 			playerInventory.currentWeight = playerInventory.currentWeight + i.getTotalWeight();
 			
-			return true;
 		}
+	}
+	
+	public boolean tryBuy(Item i, int quant)
+	{
+		if (checkWeight(i, quant) == true && checkMoney(i, quant) == true)
+			return true;
 		else
 			return false;
 	}
