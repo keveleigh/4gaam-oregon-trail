@@ -10,7 +10,11 @@ public class Inventory {
 
 	/** The current weight. */
 	int currentWeight;
-
+	
+	/** The max weight. */
+	//the max weight may be changed, still need to decide on this
+	static int MAX_WEIGHT = 1000;
+	
 	/**
 	 * Instantiates a new inventory.
 	 *
@@ -23,7 +27,7 @@ public class Inventory {
 	}
 
 	/**
-	 * Adds an item
+	 * Adds an item.
 	 *
 	 * @param item the item
 	 */
@@ -32,16 +36,18 @@ public class Inventory {
 			//checks to see if item is already in inventory
 			if (items.get(index).name.equals(item.name)){
 				items.get(index).quantity++;
+				currentWeight = currentWeight + item.weight;
 			}
 			//if item isn't in inventory yet
 			else if (items.size()+1 == index){
 				items.add(item);
+				currentWeight = currentWeight + item.weight;
 			}
 		}
 	}
 
 	/**
-	 * Removes an item
+	 * Removes an item.
 	 *
 	 * @param item the item
 	 */
@@ -49,10 +55,13 @@ public class Inventory {
 		for (int index = 0; index <= items.size(); index++){
 			if (items.get(index).name.equals(item.name)){
 				items.get(index).quantity--;
+				currentWeight = currentWeight - item.weight;
 			}
 			else if (items.size()+1 == index){
 				items.remove(item);
+				currentWeight = currentWeight - item.weight;
 			}
 		}
 	}
+
 }
