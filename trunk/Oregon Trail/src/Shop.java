@@ -40,9 +40,6 @@ public class Shop
 			//subtracts the amount of money the item cost
 			myLeader.subtractMoney(i.getTotalPrice());
 			
-			//changes the players inventory weight
-			playerInventory.currentWeight = playerInventory.currentWeight + i.getTotalWeight();
-			
 			return "Successful purchase!";
 		}
 		else
