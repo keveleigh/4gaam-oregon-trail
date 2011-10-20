@@ -50,7 +50,7 @@ public class generalStore extends JPanel {
      */
     public generalStore(Shop shop, GameInterface game) {
         myShop = shop;
-        inventory = shop.playerInventory;
+        inventory = shop.playerWagon.getWagonLoad();
         lead = shop.myLeader;
         this.game = game;
 
