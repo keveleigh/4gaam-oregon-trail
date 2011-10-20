@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * The Class Shop.
  */
@@ -9,6 +11,8 @@ public class Shop
 	
 	/** The player inventory. */
 	Inventory playerInventory;
+	
+	Inventory storeInventory;
 	
 	/** The a. */
 	Axle a;
@@ -45,6 +49,10 @@ public class Shop
 		o = new Oxen();
 		t = new Tongue();
 		w = new Wheels();
+		
+		storeInventory = new Inventory(new ArrayList<Item>(), 0);
+		
+		addItems();
 		
 	}
 	
@@ -121,5 +129,26 @@ public class Shop
 			hasRoom = true;
 		
 		return hasRoom;
+	}
+	
+	public void addItems()
+	{
+		storeInventory.add(a);
+		storeInventory.add(b);
+		storeInventory.add(c);
+		storeInventory.add(f);
+		storeInventory.add(o);
+		storeInventory.add(t);
+		storeInventory.add(w);
+		
+		a.setQuantity(10);
+		b.setQuantity(100);
+		c.setQuantity(20);
+		f.setQuantity(10000);
+		o.setQuantity(20);
+		t.setQuantity(10);
+		w.setQuantity(20);
+		
+		
 	}
 }
