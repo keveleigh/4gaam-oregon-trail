@@ -9,11 +9,18 @@ public class Clothes extends Item {
 	 */
 	public Clothes() {
 		price = 10;
-		quantity = 1;
+		quantity = 0;
 		name = "Clothes";
 		weight = 20;
 	}
-
+	
+	public Clothes(int quan) {
+		price = 10;
+		quantity = quan;
+		name = "Clothes";
+		weight = 20;
+	}
+	
 	/* (non-Javadoc)
 	 * @see Item#use()
 	 */

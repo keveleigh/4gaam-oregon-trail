@@ -8,12 +8,19 @@ public class Oxen extends Item {
 	 * Instantiates a new oxen.
 	 */
 	public Oxen() {
-		price = 10;
-		quantity = 1;
+		price = 20;
+		quantity = 0;
 		name = "Oxen";
 		weight = 20;
 	}
 
+	public Oxen(int quan) {
+		price = 20;
+		quantity = quan;
+		name = "Oxen";
+		weight = 20;
+	}
+	
 	/* (non-Javadoc)
 	 * @see Item#use()
 	 */
