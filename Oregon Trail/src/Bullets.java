@@ -8,10 +8,17 @@ public class Bullets extends Item {
 	 * Instantiates a new bullets.
 	 */
 	public Bullets() {
-		price = 10;
-		quantity = 1;
+		price = 1;
+		quantity = 0;
 		name = "Bullets";
-		weight = 20;
+		weight = 1;
+	}
+	
+	public Bullets(int quan) {
+		price = 1;
+		quantity = quan;
+		name = "Bullets";
+		weight = 1;
 	}
 
 	/* (non-Javadoc)

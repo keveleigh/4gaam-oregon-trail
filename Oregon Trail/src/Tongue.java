@@ -9,11 +9,18 @@ public class Tongue extends Item {
 	 */
 	public Tongue() {
 		price = 10;
-		quantity = 1;
+		quantity = 0;
 		name = "Tongue";
 		weight = 20;
 	}
 
+	public Tongue(int quan) {
+		price = 10;
+		quantity = quan;
+		name = "Tongue";
+		weight = 20;
+	}
+	
 	/* (non-Javadoc)
 	 * @see Item#use()
 	 */

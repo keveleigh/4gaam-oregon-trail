@@ -8,12 +8,19 @@ public class Food extends Item {
 	 * Instantiates a new food.
 	 */
 	public Food() {
-		price = 10;
-		quantity = 1;
+		price = 1;
+		quantity = 0;
 		name = "Food";
-		weight = 20;
+		weight = 1;
 	}
 
+	public Food(int quan) {
+		price = 1;
+		quantity = quan;
+		name = "Food";
+		weight = 1;
+	}
+	
 	/* (non-Javadoc)
 	 * @see Item#use()
 	 */

@@ -9,9 +9,16 @@ public class Axle extends Item {
 	 */
 	public Axle() {
 		price = 10;
-		quantity = 1;
+		quantity = 0;
 		name = "Axle";
-		weight = 20;
+		weight = 5;
+	}
+	
+	public Axle(int quan) {
+		price = 10;
+		quantity = quan;
+		name = "Axle";
+		weight = 5;
 	}
 
 	/* (non-Javadoc)
