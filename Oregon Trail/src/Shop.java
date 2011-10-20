@@ -1,7 +1,8 @@
-import java.util.ArrayList;
-
 /**
  * The Class Shop.
+ *
+ * @author Four Guys and a Mann
+ * @version v1.1 10/20/11
  */
 public class Shop 
 {
@@ -12,29 +13,6 @@ public class Shop
 	/** The player inventory. */
 	Inventory playerInventory;
 	
-	Inventory storeInventory;
-	
-	/** The a. */
-	Axle a;
-	
-	/** The b. */
-	Bullets b;
-	
-	/** The c. */
-	Clothes c;
-	
-	/** The f. */
-	Food f;
-	
-	/** The o. */
-	Oxen o;
-	
-	/** The t. */
-	Tongue t;
-	
-	/** The w. */
-	Wheels w;
-	
 	/**
 	 * Instantiates a new shop.
 	 */
@@ -42,18 +20,6 @@ public class Shop
 	{
 		myLeader = l;
 		playerInventory = in;
-		a = new Axle();
-		b = new Bullets();
-		c = new Clothes();
-		f = new Food();
-		o = new Oxen();
-		t = new Tongue();
-		w = new Wheels();
-		
-		storeInventory = new Inventory(new ArrayList<Item>(), 0);
-		
-		addItems();
-		
 	}
 	
 	/**
@@ -63,14 +29,13 @@ public class Shop
 	 * @param quant the quantity
 	 * @return true, if successful
 	 */
-	public void buy(Item i, int quant)
+	public String buy(Item i)
 	{
 		//adds the quantity of items to the players inventory
 		
-		if (tryBuy(i, quant) == true)
+		if (tryBuy(i) == true)
 		{
-			for (int j = 1; j <= quant; j++)
-				playerInventory.add(i);
+			playerInventory.add(i);
 			
 			//subtracts the amount of money the item cost
 			myLeader.subtractMoney(i.getTotalPrice());
@@ -78,12 +43,17 @@ public class Shop
 			//changes the players inventory weight
 			playerInventory.currentWeight = playerInventory.currentWeight + i.getTotalWeight();
 			
+			return "Successful purchase!";
+		}
+		else
+		{
+			return "Unable to buy. Check weight and money.";
 		}
 	}
 	
-	public boolean tryBuy(Item i, int quant)
+	public boolean tryBuy(Item i)
 	{
-		if (checkWeight(i, quant) == true && checkMoney(i, quant) == true)
+		if (checkWeight(i) == true && checkMoney(i) == true)
 			return true;
 		else
 			return false;
@@ -96,10 +66,9 @@ public class Shop
 	 * @param quant the quantity
 	 * @return true, if successful
 	 */
-	public boolean checkMoney(Item i, int quant)
+	public boolean checkMoney(Item i)
 	{
 		boolean hasMoney = true;
-		i.quantity = quant;
 		
 		//checks to see if the Player has enough money to buy the quantity of items
 		if (myLeader.getMoney() >= i.getTotalPrice())
@@ -117,10 +86,9 @@ public class Shop
 	 * @param quant the quant
 	 * @return true, if successful
 	 */
-	public boolean checkWeight(Item i, int quant)
+	public boolean checkWeight(Item i)
 	{
 		boolean hasRoom = true;
-		i.quantity = quant;
 		
 		//checks to see if the weight would be too much
 		if ((playerInventory.currentWeight + i.getTotalWeight()) > playerInventory.MAX_WEIGHT)
@@ -129,26 +97,5 @@ public class Shop
 			hasRoom = true;
 		
 		return hasRoom;
-	}
-	
-	public void addItems()
-	{
-		storeInventory.add(a);
-		storeInventory.add(b);
-		storeInventory.add(c);
-		storeInventory.add(f);
-		storeInventory.add(o);
-		storeInventory.add(t);
-		storeInventory.add(w);
-		
-		a.setQuantity(10);
-		b.setQuantity(100);
-		c.setQuantity(20);
-		f.setQuantity(10000);
-		o.setQuantity(20);
-		t.setQuantity(10);
-		w.setQuantity(20);
-		
-		
 	}
 }
