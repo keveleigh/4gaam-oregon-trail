@@ -5,18 +5,14 @@
  * @author Four Guys and a Mann
  * @version v1 10/10/11
  */
-public class Member extends Person
-{
-		
-	/**
-	 * Instantiates a new member.
-	 *
-	 * @param name the name
-	 */
-	public Member(String name)
-	{
-		super(name);
-		System.out.println("Member name: " + getName());
-	}
+public class Member extends Person {
 
+    /**
+     * Instantiates a new member.
+     *
+     * @param name the name
+     */
+    public Member(String name) {
+        super(name);
+    }
 }
