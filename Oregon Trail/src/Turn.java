@@ -1,4 +1,12 @@
 
+/**
+ * The Class Turn, which allows the user to take a turn
+ * and updates the rations, pace, and distance accordingly
+ * 
+ * @author Four Guys and a Mann
+ * @version v0.6 10/20/11
+ */
+
 public class Turn {
 
     private Wagon wagon;
