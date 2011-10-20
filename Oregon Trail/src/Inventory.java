@@ -65,7 +65,7 @@ public class Inventory {
 				{
 					current.quantity += item.getQuantity();
 					currentWeight = currentWeight + item.getTotalWeight();
-					System.out.println("Items successfully added.");
+					System.out.println(item.name + " successfully added.");
 				}
 			}
 		}
