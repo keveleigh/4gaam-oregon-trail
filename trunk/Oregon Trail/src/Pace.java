@@ -5,20 +5,25 @@
  * @author Four Guys and a Mann
  * @version v1 10/10/11
  */
+public enum Pace {
 
-public enum Pace 
-{
-	
-	/** The Leisurely Pace*/
-	//goes 20 miles per turn
-	Leisurely, 
-	
-	/** The Steady Pace */
-	//goes 27 miles per turn
-	Steady, 
-	
-	/** The Grueling Pace */
-	//goes 32 miles per turn
-	Grueling;
+    /** The Leisurely Pace*/
+    //goes 20 miles per turn
+    Leisurely(20),
+    /** The Steady Pace */
+    //goes 27 miles per turn
+    Steady(25),
+    /** The Grueling Pace */
+    //goes 32 miles per turn
+    Grueling(30);
+    
+    private int pace;
 
+    Pace(int pace) {
+        this.pace = pace;
+    }
+
+    public int getPace() {
+        return pace;
+    }
 }

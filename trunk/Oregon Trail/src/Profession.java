@@ -6,14 +6,21 @@
  * @version v1 10/10/11
  */
 public enum Profession {
-	
-	/** The Carpenter profession */
-	Carpenter,
-	
-	/** The Banker profession */
-	Banker,
-	
-	/** The Farmer profession */
-	Farmer;
 
+    /** The Carpenter profession */
+    Carpenter (1200),
+    /** The Banker profession */
+    Banker (1500),
+    /** The Farmer profession */
+    Farmer (1000);
+    
+    private int startingCash;
+    
+    Profession(int cash){
+        startingCash = cash;
+    }
+    
+    public int getCash(){
+        return startingCash;
+    }
 }
