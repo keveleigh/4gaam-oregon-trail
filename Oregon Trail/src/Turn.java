@@ -24,7 +24,7 @@ public class Turn {
     public void takeTurn() {
         distanceMoved += wagon.getCurrPace().getPace();
         if(currentFood > 0)
-            currentFood -= (wagon.getCurrRations().getRations())*wagon.getMembers().size();
+            currentFood -= (wagon.getCurrRations().getRations())*(wagon.getMembers().size() + 1);
     }
 
     /**

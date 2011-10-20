@@ -348,7 +348,7 @@ public class configScreen extends javax.swing.JPanel {
                 game.getWagon().setCurrRations(Rations.Filling);
             }
             
-            Shop shop = new Shop(game.getWagon().getLeader(), new Inventory());
+            Shop shop = new Shop(game.getWagon().getLeader(), game.getWagon());
             JPanel panel = new generalStore(shop, game);
             panel.setSize(new Dimension(450, 300));
             game.updateBounds(panel.getWidth(), panel.getHeight());

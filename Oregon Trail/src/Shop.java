@@ -10,16 +10,16 @@ public class Shop
 	/** The my leader. */
 	Leader myLeader;
 	
-	/** The player inventory. */
-	Inventory playerInventory;
+	/** The players wagon. */
+	Wagon playerWagon;
 	
 	/**
 	 * Instantiates a new shop.
 	 */
-	public Shop(Leader l, Inventory in)
+	public Shop(Leader l, Wagon w)
 	{
 		myLeader = l;
-		playerInventory = in;
+		playerWagon = w;
 	}
 	
 	/**
@@ -35,7 +35,7 @@ public class Shop
 		
 		if (tryBuy(i) == true)
 		{
-			playerInventory.add(i);
+			playerWagon.getWagonLoad().add(i);
 			
 			//subtracts the amount of money the item cost
 			myLeader.subtractMoney(i.getTotalPrice());
@@ -88,7 +88,7 @@ public class Shop
 		boolean hasRoom = true;
 		
 		//checks to see if the weight would be too much
-		if ((playerInventory.currentWeight + i.getTotalWeight()) > playerInventory.MAX_WEIGHT)
+		if ((playerWagon.getWagonLoad().currentWeight + i.getTotalWeight()) > playerWagon.getWagonLoad().MAX_WEIGHT)
 			hasRoom = false;
 		else
 			hasRoom = true;
