@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
@@ -75,7 +76,7 @@ public class configScreen extends javax.swing.JPanel {
         member4 = new javax.swing.JTextField();
         partyMembersLabel = new javax.swing.JLabel();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        begin = new javax.swing.JToggleButton();
+        begin = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(672, 323));
 
@@ -261,7 +262,7 @@ public class configScreen extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton banker;
     private javax.swing.JRadioButton barebones;
-    private javax.swing.JToggleButton begin;
+    private javax.swing.JButton begin;
     private javax.swing.JRadioButton carpenter;
     private javax.swing.JRadioButton farmer;
     private javax.swing.Box.Filler filler1;
@@ -312,13 +313,41 @@ public class configScreen extends javax.swing.JPanel {
 
         public void actionPerformed(ActionEvent event) {
 
-            String p = getSelection(professions).getText();
+        	boolean changeScreen = true;
+        	boolean alreadyError = false;
+        	
+        	if (alreadyError == true)
+        	{}
+        	else if (leaderName.getText().equals(""))
+        	{
+        		JOptionPane.showMessageDialog(game, "Please enter your name", "Error", JOptionPane.ERROR_MESSAGE);
+        		changeScreen = false;
+        		alreadyError = true;
+        	}
+        	if (alreadyError == true)
+        	{}
+        	else if (member1.getText().equals("") || member2.getText().equals("") || member3.getText().equals("") || member4.getText().equals(""))
+        	{
+        		JOptionPane.showMessageDialog(game, "You must have four other people traveling with you", "Error", JOptionPane.ERROR_MESSAGE);
+        		changeScreen = false;
+        		alreadyError = true;
+        	}
+        	if (alreadyError == true)
+        	{}
+        	else if (getSelection(professions) == (null)){
+            	JOptionPane.showMessageDialog(game, "Please select a profession", "Error", JOptionPane.ERROR_MESSAGE);
+            	changeScreen = false;
+            	alreadyError = true;
+            }
+            else{
+        	String p = getSelection(professions).getText();
             if (p.equals("Banker")) {
                 game.setLeader(new Leader(leaderName.getText(), Profession.Banker));
             } else if (p.equals("Carpenter")) {
                 game.setLeader(new Leader(leaderName.getText(), Profession.Carpenter));
             } else {
                 game.setLeader(new Leader(leaderName.getText(), Profession.Farmer));
+            }
             }
 
             ArrayList<Member> members = new ArrayList<Member>();
@@ -329,30 +358,52 @@ public class configScreen extends javax.swing.JPanel {
             game.setMembers(members);
 
             game.setWagon(new Wagon(game.getLeader(), members));
-
-            p = getSelection(pace).getText();
-            if (p.equals("Leisurely")) {
+            
+            if (alreadyError == true)
+        	{}
+            else if (getSelection(pace) == (null)){
+            	JOptionPane.showMessageDialog(game, "Please select a pace", "Error", JOptionPane.ERROR_MESSAGE);
+            	changeScreen = false;
+            	alreadyError = true;
+            }
+            else{
+            
+            String pa = getSelection(pace).getText();
+            if (pa.equals("Leisurely")) {
                 game.getWagon().setCurrPace(Pace.Leisurely);
-            } else if (p.equals("Steady")) {
+            } else if (pa.equals("Steady")) {
                 game.getWagon().setCurrPace(Pace.Steady);
             } else {
                 game.getWagon().setCurrPace(Pace.Grueling);
             }
-
-            p = getSelection(rations).getText();
-            if (p.equals("Bare Bones")) {
+            }
+            if (alreadyError == true)
+        	{}
+            else if (getSelection(rations) == (null)){
+            	JOptionPane.showMessageDialog(game, "Please select a rations", "Error", JOptionPane.ERROR_MESSAGE);
+            	changeScreen = false;
+            	alreadyError = true;
+            }
+            else{
+            
+            String r = getSelection(rations).getText();
+            if (r.equals("Bare Bones")) {
                 game.getWagon().setCurrRations(Rations.BareBones);
-            } else if (p.equals("Meager")) {
+            } else if (r.equals("Meager")) {
                 game.getWagon().setCurrRations(Rations.Meager);
             } else {
                 game.getWagon().setCurrRations(Rations.Filling);
             }
+            }
             
+            if (changeScreen == true)
+            {
             Shop shop = new Shop(game.getWagon().getLeader(), game.getWagon());
             JPanel panel = new generalStore(shop, game);
             panel.setSize(new Dimension(450, 300));
             game.updateBounds(panel.getWidth(), panel.getHeight());
             game.changeDisplay(panel);
+            }
         }
     }
 }
