@@ -11,14 +11,14 @@ public class Clothes extends Item {
 		price = 10;
 		quantity = 0;
 		name = "Clothes";
-		weight = 20;
+		weight = 5;
 	}
 	
 	public Clothes(int quan) {
 		price = 10;
 		quantity = quan;
 		name = "Clothes";
-		weight = 20;
+		weight = 5;
 	}
 	
 	/* (non-Javadoc)
