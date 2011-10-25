@@ -33,6 +33,7 @@ public class generalStore extends JPanel {
     private JLabel lblNewLabel_3;
     private JLabel lblNewLabel_4;
     private JLabel lblNewLabel_5;
+    private JLabel lblNewLabel_11;
     Axle a = new Axle();
     Bullets b = new Bullets();
     Clothes c = new Clothes();
@@ -55,7 +56,7 @@ public class generalStore extends JPanel {
         this.game = game;
 
         setLayout(null);
-        setBounds(100, 100, 450, 300);
+        setBounds(100, 100, 500, 300);
         setBorder(new EmptyBorder(5, 5, 5, 5));
         setLayout(null);
         setBackground(Color.yellow);
@@ -129,59 +130,59 @@ public class generalStore extends JPanel {
         add(lblWheels);
 
         JLabel lblNewLabel_8 = new JLabel("Have:");
-        lblNewLabel_8.setBounds(200, 58, 46, 14);
+        lblNewLabel_8.setBounds(281, 58, 46, 14);
         add(lblNewLabel_8);
 
         JLabel label = new JLabel("Have:");
-        label.setBounds(200, 79, 46, 14);
+        label.setBounds(281, 79, 46, 14);
         add(label);
 
         JLabel label_1 = new JLabel("Have:");
-        label_1.setBounds(200, 100, 46, 14);
+        label_1.setBounds(281, 100, 46, 14);
         add(label_1);
 
         JLabel label_2 = new JLabel("Have:");
-        label_2.setBounds(200, 121, 46, 14);
+        label_2.setBounds(281, 121, 46, 14);
         add(label_2);
 
         JLabel label_3 = new JLabel("Have:");
-        label_3.setBounds(200, 142, 46, 14);
+        label_3.setBounds(281, 142, 46, 14);
         add(label_3);
 
         JLabel label_4 = new JLabel("Have:");
-        label_4.setBounds(200, 163, 46, 14);
+        label_4.setBounds(281, 163, 46, 14);
         add(label_4);
 
         JLabel label_5 = new JLabel("Have:");
-        label_5.setBounds(200, 184, 46, 14);
+        label_5.setBounds(281, 184, 46, 14);
         add(label_5);
 
         JLabel lblNewLabel_9 = new JLabel(Integer.toString(inventory.getQuantity(0)));
-        lblNewLabel_9.setBounds(240, 58, 46, 14);
+        lblNewLabel_9.setBounds(321, 58, 46, 14);
         add(lblNewLabel_9);
 
         JLabel label_6 = new JLabel(Integer.toString(inventory.getQuantity(1)));
-        label_6.setBounds(240, 79, 46, 14);
+        label_6.setBounds(321, 79, 46, 14);
         add(label_6);
 
         JLabel label_7 = new JLabel(Integer.toString(inventory.getQuantity(2)));
-        label_7.setBounds(240, 100, 46, 14);
+        label_7.setBounds(321, 100, 46, 14);
         add(label_7);
 
         JLabel label_8 = new JLabel(Integer.toString(inventory.getQuantity(3)));
-        label_8.setBounds(240, 121, 46, 14);
+        label_8.setBounds(321, 121, 46, 14);
         add(label_8);
 
         JLabel label_9 = new JLabel(Integer.toString(inventory.getQuantity(4)));
-        label_9.setBounds(240, 142, 46, 14);
+        label_9.setBounds(321, 142, 46, 14);
         add(label_9);
 
         JLabel label_10 = new JLabel(Integer.toString(inventory.getQuantity(5)));
-        label_10.setBounds(240, 163, 46, 14);
+        label_10.setBounds(321, 163, 46, 14);
         add(label_10);
 
         JLabel label_11 = new JLabel(Integer.toString(inventory.getQuantity(6)));
-        label_11.setBounds(240, 184, 46, 14);
+        label_11.setBounds(321, 184, 46, 14);
         add(label_11);
 
         JLabel lblPrice = new JLabel("Price:");
@@ -273,17 +274,17 @@ public class generalStore extends JPanel {
         add(lblNewLabel_5);
 
         JButton btnUpdateCart = new JButton("Update Cart");
-        btnUpdateCart.setBounds(315, 94, 117, 23);
+        btnUpdateCart.setBounds(373, 93, 117, 23);
         btnUpdateCart.addActionListener(new updateButtonListener());
         add(btnUpdateCart);
 
         JButton btnBuyItems = new JButton("Buy Items");
-        btnBuyItems.setBounds(315, 126, 117, 23);
+        btnBuyItems.setBounds(373, 126, 117, 23);
         btnBuyItems.addActionListener(new buyButtonListener());
         add(btnBuyItems);
 
         JButton btnLeaveStore = new JButton("Leave Store");
-        btnLeaveStore.setBounds(315, 157, 117, 23);
+        btnLeaveStore.setBounds(373, 157, 117, 23);
         btnLeaveStore.addActionListener(new leaveButtonListener());
         add(btnLeaveStore);
 
@@ -294,6 +295,66 @@ public class generalStore extends JPanel {
         JLabel lblNewLabel_6 = new JLabel(shop.myLeader.getName());
         lblNewLabel_6.setBounds(227, 22, 123, 14);
         add(lblNewLabel_6);
+        
+        JLabel lblNewLabel_7 = new JLabel("Weight:");
+        lblNewLabel_7.setBounds(190, 79, 46, 14);
+        add(lblNewLabel_7);
+        
+        JLabel label_24 = new JLabel("Weight:");
+        label_24.setBounds(190, 58, 46, 14);
+        add(label_24);
+        
+        JLabel label_25 = new JLabel("Weight:");
+        label_25.setBounds(190, 100, 46, 14);
+        add(label_25);
+        
+        JLabel label_26 = new JLabel("Weight:");
+        label_26.setBounds(190, 121, 46, 14);
+        add(label_26);
+        
+        JLabel label_27 = new JLabel("Weight:");
+        label_27.setBounds(190, 142, 46, 14);
+        add(label_27);
+        
+        JLabel label_28 = new JLabel("Weight:");
+        label_28.setBounds(190, 163, 46, 14);
+        add(label_28);
+        
+        JLabel label_29 = new JLabel("Weight:");
+        label_29.setBounds(190, 184, 46, 14);
+        add(label_29);
+        
+        JLabel lblNewLabel_10 = new JLabel(Integer.toString(a.weight));
+        lblNewLabel_10.setBounds(235, 58, 36, 14);
+        add(lblNewLabel_10);
+        
+        JLabel label_30 = new JLabel(Integer.toString(b.weight));
+        label_30.setBounds(235, 79, 36, 14);
+        add(label_30);
+        
+        JLabel label_31 = new JLabel(Integer.toString(c.weight));
+        label_31.setBounds(235, 100, 36, 14);
+        add(label_31);
+        
+        JLabel label_32 = new JLabel(Integer.toString(f.weight));
+        label_32.setBounds(235, 121, 36, 14);
+        add(label_32);
+        
+        JLabel label_33 = new JLabel(Integer.toString(o.weight));
+        label_33.setBounds(235, 142, 36, 14);
+        add(label_33);
+        
+        JLabel label_34 = new JLabel(Integer.toString(t.weight));
+        label_34.setBounds(235, 163, 36, 14);
+        add(label_34);
+        
+        JLabel label_35 = new JLabel(Integer.toString(w.weight));
+        label_35.setBounds(235, 184, 36, 14);
+        add(label_35);
+        
+        JLabel lblNewLabel_11 = new JLabel("Happy shopping!");
+        lblNewLabel_11.setBounds(139, 260, 320, 14);
+        add(lblNewLabel_11);
     }
 
     /**
@@ -352,64 +413,98 @@ public class generalStore extends JPanel {
     private class buyButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent event) {
-            try {
-                int num = Integer.parseInt(axleBuy.getText());
-                if (num > 0) {
-                    myShop.buy(new Axle(num));
-                }
-            } catch (NumberFormatException e) {
-                axleBuy.setText("0");
-            }
-            try {
-                int num = Integer.parseInt(bulletsBuy.getText());
-                if (num > 0) {
-                    myShop.buy(new Bullets(num));
-                }
-            } catch (NumberFormatException e) {
-                bulletsBuy.setText("0");
-            }
-            try {
-                int num = Integer.parseInt(clothesBuy.getText());
-                if (num > 0) {
-                    myShop.buy(new Clothes(num));
-                }
-            } catch (NumberFormatException e) {
-                clothesBuy.setText("0");
-            }
-            try {
-                int num = Integer.parseInt(foodBuy.getText());
-                if (num > 0) {
-                    myShop.buy(new Food(num));
-                }
-            } catch (NumberFormatException e) {
-                foodBuy.setText("0");
-            }
-            try {
-                int num = Integer.parseInt(oxenBuy.getText());
-                if (num > 0) {
-                    myShop.buy(new Oxen(num));
-                }
-            } catch (NumberFormatException e) {
-                oxenBuy.setText("0");
-            }
-            try {
-                int num = Integer.parseInt(tongueBuy.getText());
-                if (num > 0) {
-                    myShop.buy(new Tongue(num));
-                }
-            } catch (NumberFormatException e) {
-                tongueBuy.setText("0");
-            }
-            try {
-                int num = Integer.parseInt(wheelsBuy.getText());
-                if (num > 0) {
-                    myShop.buy(new Wheels(num));
-                }
-            } catch (NumberFormatException e) {
-                wheelsBuy.setText("0");
-            }
+        	cartWeight = Integer.parseInt(axleBuy.getText()) * a.weight + Integer.parseInt(bulletsBuy.getText()) * b.weight + Integer.parseInt(clothesBuy.getText()) * c.weight + Integer.parseInt(foodBuy.getText()) * f.weight + Integer.parseInt(oxenBuy.getText()) * o.weight + Integer.parseInt(tongueBuy.getText()) * t.weight + Integer.parseInt(wheelsBuy.getText()) * w.weight;
+            cartCost = Integer.parseInt(axleBuy.getText()) * a.price + Integer.parseInt(bulletsBuy.getText()) * b.price + Integer.parseInt(clothesBuy.getText()) * c.price + Integer.parseInt(foodBuy.getText()) * f.price + Integer.parseInt(oxenBuy.getText()) * o.price + Integer.parseInt(tongueBuy.getText()) * t.price + Integer.parseInt(wheelsBuy.getText()) * w.price;
+   
+        	if (cartWeight <= (inventory.MAX_WEIGHT - inventory.currentWeight) && cartCost <= lead.money)
+        	{
+        		try {
+        			int num = Integer.parseInt(axleBuy.getText());
+        			if (num > 0) 
+        			{
+        				myShop.buy(new Axle(num));
+        				axleBuy.setText("0");
+        			}
+        		} catch (NumberFormatException e) {
+        			axleBuy.setText("0");
+        		}
+        		try {
+        			int num = Integer.parseInt(bulletsBuy.getText());
+        			if (num > 0) 
+        			{
+        				myShop.buy(new Bullets(num));
+        				bulletsBuy.setText("0");
+        			}
+        		} catch (NumberFormatException e) {
+        			bulletsBuy.setText("0");
+        		}
+        		try {
+        			int num = Integer.parseInt(clothesBuy.getText());
+        			if (num > 0) 
+        			{
+        				myShop.buy(new Clothes(num));
+        				clothesBuy.setText("0");
+        			}
+        		} catch (NumberFormatException e) {
+        			clothesBuy.setText("0");
+        		}
+        		try {
+        			int num = Integer.parseInt(foodBuy.getText());
+        			if (num > 0) {
+        				myShop.buy(new Food(num));
+        				foodBuy.setText("0");
+        			}
+        		} catch (NumberFormatException e) {
+        			foodBuy.setText("0");
+        		}
+        		try {
+        			int num = Integer.parseInt(oxenBuy.getText());
+        			if (num > 0) {
+        				myShop.buy(new Oxen(num));
+        				oxenBuy.setText("0");
+        			}
+        		} catch (NumberFormatException e) {
+        			oxenBuy.setText("0");
+        		}
+        		try {
+        			int num = Integer.parseInt(tongueBuy.getText());
+        			if (num > 0) 
+        			{
+        				myShop.buy(new Tongue(num));
+        				tongueBuy.setText("0");
+        			}
+        		} catch (NumberFormatException e) {
+        			tongueBuy.setText("0");
+        		}
+        		try {
+        			int num = Integer.parseInt(wheelsBuy.getText());
+        			if (num > 0) 
+        			{
+        				myShop.buy(new Wheels(num));
+        				wheelsBuy.setText("0");
+        			}
+        		} catch (NumberFormatException e) {
+        			wheelsBuy.setText("0");
+        		}
+        	cartWeight = 0;
+            cartCost = 0;
             lblNewLabel_3.setText(Integer.toString(lead.money));
             lblNewLabel_5.setText(Integer.toString(inventory.MAX_WEIGHT - inventory.currentWeight));
+        	}
+        	else if (cartWeight >= (inventory.MAX_WEIGHT - inventory.currentWeight) && cartCost >= lead.money)
+        	{
+        		lblNewLabel_11.setText("You don't have enough room or money.");
+        	}
+        	else if (cartCost >= lead.money)
+        	{
+        		lblNewLabel_11.setText("You don't have enough money.");
+        	}
+        	else if (cartWeight >= (inventory.MAX_WEIGHT - inventory.currentWeight))
+        	{
+        		lblNewLabel_11.setText("You don't have enough room.");
+        	}
+        	lblNewLabel_2.setText(Integer.toString(cartCost));
+            lblNewLabel_4.setText(Integer.toString(cartWeight));
         }
     }
 
