@@ -413,8 +413,46 @@ public class generalStore extends JPanel {
     private class buyButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent event) {
-        	updateButtonListener cbl = new updateButtonListener();
-        	cbl.notify();
+        	 try {
+                 Integer.parseInt(axleBuy.getText());
+             } catch (NumberFormatException e) {
+                 axleBuy.setText("0");
+             }
+             try {
+                 Integer.parseInt(bulletsBuy.getText());
+             } catch (NumberFormatException e) {
+                 bulletsBuy.setText("0");
+             }
+             try {
+                 Integer.parseInt(clothesBuy.getText());
+             } catch (NumberFormatException e) {
+                 clothesBuy.setText("0");
+             }
+             try {
+                 Integer.parseInt(foodBuy.getText());
+             } catch (NumberFormatException e) {
+                 foodBuy.setText("0");
+             }
+             try {
+                 Integer.parseInt(oxenBuy.getText());
+             } catch (NumberFormatException e) {
+                 oxenBuy.setText("0");
+             }
+             try {
+                 Integer.parseInt(tongueBuy.getText());
+             } catch (NumberFormatException e) {
+                 tongueBuy.setText("0");
+             }
+             try {
+                 Integer.parseInt(wheelsBuy.getText());
+             } catch (NumberFormatException e) {
+                 wheelsBuy.setText("0");
+             }
+             cartWeight = Integer.parseInt(axleBuy.getText()) * a.weight + Integer.parseInt(bulletsBuy.getText()) * b.weight + Integer.parseInt(clothesBuy.getText()) * c.weight + Integer.parseInt(foodBuy.getText()) * f.weight + Integer.parseInt(oxenBuy.getText()) * o.weight + Integer.parseInt(tongueBuy.getText()) * t.weight + Integer.parseInt(wheelsBuy.getText()) * w.weight;
+             cartCost = Integer.parseInt(axleBuy.getText()) * a.price + Integer.parseInt(bulletsBuy.getText()) * b.price + Integer.parseInt(clothesBuy.getText()) * c.price + Integer.parseInt(foodBuy.getText()) * f.price + Integer.parseInt(oxenBuy.getText()) * o.price + Integer.parseInt(tongueBuy.getText()) * t.price + Integer.parseInt(wheelsBuy.getText()) * w.price;
+             lblNewLabel_2.setText(Integer.toString(cartCost));
+             lblNewLabel_4.setText(Integer.toString(cartWeight));
+ 
    
         	if (cartWeight <= (inventory.MAX_WEIGHT - inventory.currentWeight) && cartCost <= lead.money)
         	{
