@@ -352,7 +352,7 @@ public class generalStore extends JPanel {
         label_35.setBounds(235, 184, 36, 14);
         add(label_35);
         
-        JLabel lblNewLabel_11 = new JLabel("Happy shopping!");
+        lblNewLabel_11 = new JLabel("Happy shopping!");
         lblNewLabel_11.setBounds(139, 260, 320, 14);
         add(lblNewLabel_11);
     }
@@ -413,8 +413,8 @@ public class generalStore extends JPanel {
     private class buyButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent event) {
-        	cartWeight = Integer.parseInt(axleBuy.getText()) * a.weight + Integer.parseInt(bulletsBuy.getText()) * b.weight + Integer.parseInt(clothesBuy.getText()) * c.weight + Integer.parseInt(foodBuy.getText()) * f.weight + Integer.parseInt(oxenBuy.getText()) * o.weight + Integer.parseInt(tongueBuy.getText()) * t.weight + Integer.parseInt(wheelsBuy.getText()) * w.weight;
-            cartCost = Integer.parseInt(axleBuy.getText()) * a.price + Integer.parseInt(bulletsBuy.getText()) * b.price + Integer.parseInt(clothesBuy.getText()) * c.price + Integer.parseInt(foodBuy.getText()) * f.price + Integer.parseInt(oxenBuy.getText()) * o.price + Integer.parseInt(tongueBuy.getText()) * t.price + Integer.parseInt(wheelsBuy.getText()) * w.price;
+        	updateButtonListener cbl = new updateButtonListener();
+        	cbl.notify();
    
         	if (cartWeight <= (inventory.MAX_WEIGHT - inventory.currentWeight) && cartCost <= lead.money)
         	{
@@ -423,8 +423,8 @@ public class generalStore extends JPanel {
         			if (num > 0) 
         			{
         				myShop.buy(new Axle(num));
-        				axleBuy.setText("0");
         			}
+        			axleBuy.setText("0");
         		} catch (NumberFormatException e) {
         			axleBuy.setText("0");
         		}
@@ -433,8 +433,8 @@ public class generalStore extends JPanel {
         			if (num > 0) 
         			{
         				myShop.buy(new Bullets(num));
-        				bulletsBuy.setText("0");
-        			}
+           			}
+        			bulletsBuy.setText("0");
         		} catch (NumberFormatException e) {
         			bulletsBuy.setText("0");
         		}
@@ -443,17 +443,18 @@ public class generalStore extends JPanel {
         			if (num > 0) 
         			{
         				myShop.buy(new Clothes(num));
-        				clothesBuy.setText("0");
         			}
+        			clothesBuy.setText("0");
         		} catch (NumberFormatException e) {
         			clothesBuy.setText("0");
         		}
         		try {
         			int num = Integer.parseInt(foodBuy.getText());
-        			if (num > 0) {
+        			if (num > 0) 
+        			{
         				myShop.buy(new Food(num));
-        				foodBuy.setText("0");
         			}
+        			foodBuy.setText("0");
         		} catch (NumberFormatException e) {
         			foodBuy.setText("0");
         		}
@@ -461,28 +462,26 @@ public class generalStore extends JPanel {
         			int num = Integer.parseInt(oxenBuy.getText());
         			if (num > 0) {
         				myShop.buy(new Oxen(num));
-        				oxenBuy.setText("0");
         			}
+        			oxenBuy.setText("0");
         		} catch (NumberFormatException e) {
         			oxenBuy.setText("0");
         		}
         		try {
         			int num = Integer.parseInt(tongueBuy.getText());
-        			if (num > 0) 
-        			{
+        			if (num > 0) {
         				myShop.buy(new Tongue(num));
-        				tongueBuy.setText("0");
         			}
+    				tongueBuy.setText("0");
         		} catch (NumberFormatException e) {
         			tongueBuy.setText("0");
         		}
         		try {
         			int num = Integer.parseInt(wheelsBuy.getText());
-        			if (num > 0) 
-        			{
+        			if (num > 0) {
         				myShop.buy(new Wheels(num));
-        				wheelsBuy.setText("0");
         			}
+        			wheelsBuy.setText("0");
         		} catch (NumberFormatException e) {
         			wheelsBuy.setText("0");
         		}
@@ -490,6 +489,9 @@ public class generalStore extends JPanel {
             cartCost = 0;
             lblNewLabel_3.setText(Integer.toString(lead.money));
             lblNewLabel_5.setText(Integer.toString(inventory.MAX_WEIGHT - inventory.currentWeight));
+        	lblNewLabel_2.setText(Integer.toString(cartCost));
+            lblNewLabel_4.setText(Integer.toString(cartWeight));
+            lblNewLabel_11.setText("Thank you for your purchase!");
         	}
         	else if (cartWeight >= (inventory.MAX_WEIGHT - inventory.currentWeight) && cartCost >= lead.money)
         	{
@@ -503,8 +505,6 @@ public class generalStore extends JPanel {
         	{
         		lblNewLabel_11.setText("You don't have enough room.");
         	}
-        	lblNewLabel_2.setText(Integer.toString(cartCost));
-            lblNewLabel_4.setText(Integer.toString(cartWeight));
         }
     }
 
