@@ -76,9 +76,9 @@ public class configScreen extends javax.swing.JPanel {
         member4 = new javax.swing.JTextField();
         partyMembersLabel = new javax.swing.JLabel();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        begin = new javax.swing.JButton();
+        begin = new javax.swing.JToggleButton();
 
-        setPreferredSize(new java.awt.Dimension(672, 323));
+        setPreferredSize(new java.awt.Dimension(650, 323));
 
         leader.setText("Leader Name:");
 
@@ -136,44 +136,41 @@ public class configScreen extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
+                    .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(farmer)
-                            .addComponent(carpenter)
-                            .addComponent(banker)
-                            .addComponent(professionText))
-                        .addGap(108, 108, 108))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addComponent(leader)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(leaderName))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(leader)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(leaderName, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(partyMembersLabel)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(member1Label)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(member1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(member2Labe)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(member2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(member3Label)
-                                .addComponent(member4Label))
-                            .addGap(4, 4, 4)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(member4, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
-                                .addComponent(member3)
-                                .addComponent(member2)
-                                .addComponent(filler1, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                                .addComponent(member1)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(partyMembersLabel))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(member3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(member4Label)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(member4, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(oregonTrail))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(oregonTrail)
-                        .addGap(150, 150, 150))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(professionText)
+                            .addComponent(banker)
+                            .addComponent(carpenter)
+                            .addComponent(farmer))
+                        .addGap(112, 112, 112)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(leisurely)
                             .addComponent(steady)
@@ -184,85 +181,88 @@ public class configScreen extends javax.swing.JPanel {
                                 .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(filling)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
-                                .addComponent(begin)
-                                .addGap(63, 63, 63))
+                            .addComponent(rationText)
+                            .addComponent(barebones)
                             .addComponent(meager)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(barebones)
-                                    .addComponent(rationText))
-                                .addContainerGap(253, Short.MAX_VALUE))))))
+                            .addComponent(filling)))
+                    .addComponent(begin, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(leader)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(leader))
                             .addComponent(leaderName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(25, 25, 25)
                         .addComponent(partyMembersLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(member1Label)
-                            .addComponent(member1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(member2Labe)
-                            .addComponent(member2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(member3Label)
-                            .addComponent(member3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(member4Label)
-                            .addComponent(member4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(member1Label))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(member1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(member2Labe))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(member2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(member3Label))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(member3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(member4Label))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(member4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(oregonTrail))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(professionText)
-                            .addComponent(filler1, javax.swing.GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE)
                             .addComponent(paceText)
                             .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(banker)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(carpenter)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(farmer))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(leisurely)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(steady)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(grueling)))
-                        .addGap(29, 29, 29))
+                                .addComponent(grueling))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(rationText)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(barebones)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(meager)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(filling)
-                            .addComponent(begin))
-                        .addContainerGap())))
+                        .addComponent(filling)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addComponent(begin)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton banker;
     private javax.swing.JRadioButton barebones;
-    private javax.swing.JButton begin;
+    private javax.swing.JToggleButton begin;
     private javax.swing.JRadioButton carpenter;
     private javax.swing.JRadioButton farmer;
     private javax.swing.Box.Filler filler1;
@@ -313,41 +313,35 @@ public class configScreen extends javax.swing.JPanel {
 
         public void actionPerformed(ActionEvent event) {
 
-        	boolean changeScreen = true;
-        	boolean alreadyError = false;
-        	
-        	if (alreadyError == true)
-        	{}
-        	else if (leaderName.getText().equals(""))
-        	{
-        		JOptionPane.showMessageDialog(game, "Please enter your name", "Error", JOptionPane.ERROR_MESSAGE);
-        		changeScreen = false;
-        		alreadyError = true;
-        	}
-        	if (alreadyError == true)
-        	{}
-        	else if (member1.getText().equals("") || member2.getText().equals("") || member3.getText().equals("") || member4.getText().equals(""))
-        	{
-        		JOptionPane.showMessageDialog(game, "You must have four other people traveling with you", "Error", JOptionPane.ERROR_MESSAGE);
-        		changeScreen = false;
-        		alreadyError = true;
-        	}
-        	if (alreadyError == true)
-        	{}
-        	else if (getSelection(professions) == (null)){
-            	JOptionPane.showMessageDialog(game, "Please select a profession", "Error", JOptionPane.ERROR_MESSAGE);
-            	changeScreen = false;
-            	alreadyError = true;
+            boolean changeScreen = true;
+            boolean alreadyError = false;
+
+            if (alreadyError == true) {
+            } else if (leaderName.getText().equals("")) {
+                JOptionPane.showMessageDialog(game, "Please enter your name", "Error", JOptionPane.ERROR_MESSAGE);
+                changeScreen = false;
+                alreadyError = true;
             }
-            else{
-        	String p = getSelection(professions).getText();
-            if (p.equals("Banker")) {
-                game.setLeader(new Leader(leaderName.getText(), Profession.Banker));
-            } else if (p.equals("Carpenter")) {
-                game.setLeader(new Leader(leaderName.getText(), Profession.Carpenter));
+            if (alreadyError == true) {
+            } else if (member1.getText().equals("") || member2.getText().equals("") || member3.getText().equals("") || member4.getText().equals("")) {
+                JOptionPane.showMessageDialog(game, "You must have four other people traveling with you", "Error", JOptionPane.ERROR_MESSAGE);
+                changeScreen = false;
+                alreadyError = true;
+            }
+            if (alreadyError == true) {
+            } else if (getSelection(professions) == (null)) {
+                JOptionPane.showMessageDialog(game, "Please select a profession", "Error", JOptionPane.ERROR_MESSAGE);
+                changeScreen = false;
+                alreadyError = true;
             } else {
-                game.setLeader(new Leader(leaderName.getText(), Profession.Farmer));
-            }
+                String p = getSelection(professions).getText();
+                if (p.equals("Banker")) {
+                    game.setLeader(new Leader(leaderName.getText(), Profession.Banker));
+                } else if (p.equals("Carpenter")) {
+                    game.setLeader(new Leader(leaderName.getText(), Profession.Carpenter));
+                } else {
+                    game.setLeader(new Leader(leaderName.getText(), Profession.Farmer));
+                }
             }
 
             ArrayList<Member> members = new ArrayList<Member>();
@@ -358,51 +352,46 @@ public class configScreen extends javax.swing.JPanel {
             game.setMembers(members);
 
             game.setWagon(new Wagon(game.getLeader(), members));
-            
-            if (alreadyError == true)
-        	{}
-            else if (getSelection(pace) == (null)){
-            	JOptionPane.showMessageDialog(game, "Please select a pace", "Error", JOptionPane.ERROR_MESSAGE);
-            	changeScreen = false;
-            	alreadyError = true;
-            }
-            else{
-            
-            String pa = getSelection(pace).getText();
-            if (pa.equals("Leisurely")) {
-                game.getWagon().setCurrPace(Pace.Leisurely);
-            } else if (pa.equals("Steady")) {
-                game.getWagon().setCurrPace(Pace.Steady);
+
+            if (alreadyError == true) {
+            } else if (getSelection(pace) == (null)) {
+                JOptionPane.showMessageDialog(game, "Please select a pace", "Error", JOptionPane.ERROR_MESSAGE);
+                changeScreen = false;
+                alreadyError = true;
             } else {
-                game.getWagon().setCurrPace(Pace.Grueling);
+
+                String pa = getSelection(pace).getText();
+                if (pa.equals("Leisurely")) {
+                    game.getWagon().setCurrPace(Pace.Leisurely);
+                } else if (pa.equals("Steady")) {
+                    game.getWagon().setCurrPace(Pace.Steady);
+                } else {
+                    game.getWagon().setCurrPace(Pace.Grueling);
+                }
             }
-            }
-            if (alreadyError == true)
-        	{}
-            else if (getSelection(rations) == (null)){
-            	JOptionPane.showMessageDialog(game, "Please select a rations", "Error", JOptionPane.ERROR_MESSAGE);
-            	changeScreen = false;
-            	alreadyError = true;
-            }
-            else{
-            
-            String r = getSelection(rations).getText();
-            if (r.equals("Bare Bones")) {
-                game.getWagon().setCurrRations(Rations.BareBones);
-            } else if (r.equals("Meager")) {
-                game.getWagon().setCurrRations(Rations.Meager);
+            if (alreadyError == true) {
+            } else if (getSelection(rations) == (null)) {
+                JOptionPane.showMessageDialog(game, "Please select a rations", "Error", JOptionPane.ERROR_MESSAGE);
+                changeScreen = false;
+                alreadyError = true;
             } else {
-                game.getWagon().setCurrRations(Rations.Filling);
+
+                String r = getSelection(rations).getText();
+                if (r.equals("Bare Bones")) {
+                    game.getWagon().setCurrRations(Rations.BareBones);
+                } else if (r.equals("Meager")) {
+                    game.getWagon().setCurrRations(Rations.Meager);
+                } else {
+                    game.getWagon().setCurrRations(Rations.Filling);
+                }
             }
-            }
-            
-            if (changeScreen == true)
-            {
-            Shop shop = new Shop(game.getWagon().getLeader(), game.getWagon());
-            JPanel panel = new generalStore(shop, game);
-            panel.setSize(new Dimension(450, 300));
-            game.updateBounds(panel.getWidth(), panel.getHeight());
-            game.changeDisplay(panel);
+
+            if (changeScreen == true) {
+                Shop shop = new Shop(game.getWagon().getLeader(), game.getWagon());
+                JPanel panel = new generalStore(shop, game);
+                panel.setSize(new Dimension(450, 300));
+                game.updateBounds(panel.getWidth(), panel.getHeight());
+                game.changeDisplay(panel);
             }
         }
     }

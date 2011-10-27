@@ -26,8 +26,8 @@ public class mainScreen extends javax.swing.JPanel {
         leisurely.setBackground(Color.yellow);
         steady.setBackground(Color.yellow);
         grueling.setBackground(Color.yellow);
-        
-        
+
+
         game = face;
         leader = game.getLeader();
         wagon = game.getWagon();
@@ -54,10 +54,10 @@ public class mainScreen extends javax.swing.JPanel {
         } else {
             filling.setSelected(true);
         }
-        
+
         currentFood.setText(Integer.toString(wagonLoad.getQuantity(3)));
         money.setText(Integer.toString(leader.getMoney()));
-        
+
         map.setBackground(Color.BLACK);
     }
 
@@ -88,6 +88,8 @@ public class mainScreen extends javax.swing.JPanel {
         map = new javax.swing.JPanel();
         moneyText = new javax.swing.JLabel();
         money = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         distanceText.setText("Distance Traveled:");
 
@@ -129,19 +131,23 @@ public class mainScreen extends javax.swing.JPanel {
         );
         mapLayout.setVerticalGroup(
             mapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 301, Short.MAX_VALUE)
+            .addGap(0, 274, Short.MAX_VALUE)
         );
 
         moneyText.setText("Money:");
 
         money.setText("0");
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(distanceText)
@@ -155,27 +161,35 @@ public class mainScreen extends javax.swing.JPanel {
                         .addComponent(moneyText)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(money, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(map, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addComponent(map, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(grueling)
-                    .addComponent(steady)
-                    .addComponent(leisurely)
-                    .addComponent(paceText)
-                    .addComponent(filling)
-                    .addComponent(meager)
-                    .addComponent(rationText)
-                    .addComponent(barebones)
-                    .addComponent(takeTurn))
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(grueling)
+                            .addComponent(steady)
+                            .addComponent(leisurely)
+                            .addComponent(paceText)
+                            .addComponent(filling)
+                            .addComponent(meager)
+                            .addComponent(rationText)
+                            .addComponent(barebones))
+                        .addContainerGap(37, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(takeTurn)
+                        .addGap(24, 24, 24))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addComponent(map, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(rationText)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(barebones)
@@ -190,11 +204,10 @@ public class mainScreen extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(steady)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(grueling)
-                        .addGap(29, 29, 29)
-                        .addComponent(takeTurn)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(grueling)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(distanceText)
                             .addComponent(distanceTraveled))
@@ -206,10 +219,10 @@ public class mainScreen extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(moneyText)
                             .addComponent(money))
-                        .addGap(122, 122, 122))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(map, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(takeTurn))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -220,6 +233,8 @@ public class mainScreen extends javax.swing.JPanel {
     private javax.swing.JRadioButton filling;
     private javax.swing.JLabel foodText;
     private javax.swing.JRadioButton grueling;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JRadioButton leisurely;
     private javax.swing.JPanel map;
     private javax.swing.JRadioButton meager;
@@ -265,7 +280,7 @@ public class mainScreen extends javax.swing.JPanel {
             } else {
                 wagon.setCurrRations(Rations.Filling);
             }
-            
+
             money.setText(Integer.toString(leader.getMoney()));
 
             turn.takeTurn();
