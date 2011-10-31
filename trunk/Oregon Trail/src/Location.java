@@ -1,9 +1,11 @@
 
-public abstract class Location {
+public class Location {
 	String name;
+	int distance; //distance from beginning
 	
-	Location(String name){
+	public Location(String name, int distance){
 		this.name = name;
+		this.distance = distance;
 	}
 
 	public String getName() {
