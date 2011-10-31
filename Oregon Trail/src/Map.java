@@ -30,5 +30,7 @@ public class Map<T> {
 		locations[17] = new Location("Oregon", 2100);
 	}
 	
-	
+	public boolean atNextTown(){
+		return false;
+	}
 }
