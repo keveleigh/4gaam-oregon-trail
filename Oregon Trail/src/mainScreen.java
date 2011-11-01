@@ -18,6 +18,7 @@ public class mainScreen extends javax.swing.JPanel {
     private Pace currPace;
     private Rations currRation;
     private Turn turn;
+    private Map mapClass;
     private Inventory wagonLoad;
     private TurnListener listen;
 
@@ -39,6 +40,7 @@ public class mainScreen extends javax.swing.JPanel {
         currPace = wagon.getCurrPace();
         currRation = wagon.getCurrRations();
         turn = new Turn(wagon);
+        mapClass = new Map(turn);
         listen = new TurnListener();
 
         takeTurn.addActionListener(listen);
@@ -92,6 +94,9 @@ public class mainScreen extends javax.swing.JPanel {
         map = new javax.swing.JPanel();
         moneyText = new javax.swing.JLabel();
         money = new javax.swing.JLabel();
+        lastLocation = new javax.swing.JLabel();
+        distanceToNext = new javax.swing.JLabel();
+        
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
 
@@ -270,6 +275,8 @@ public class mainScreen extends javax.swing.JPanel {
     private javax.swing.JRadioButton meager;
     private javax.swing.JLabel money;
     private javax.swing.JLabel moneyText;
+    private javax.swing.JLabel lastLocation;
+    private javax.swing.JLabel distanceToNext;
     private javax.swing.ButtonGroup pace;
     private javax.swing.JLabel paceText;
     private javax.swing.JLabel rationText;
@@ -314,6 +321,7 @@ public class mainScreen extends javax.swing.JPanel {
             money.setText(Integer.toString(leader.getMoney()));
 
             turn.takeTurn();
+            lastLocation.setText(mapClass.getLastTown());
             currentFood.setText(Integer.toString(turn.getCurrentFood()));
             distanceTraveled.setText(Integer.toString(turn.getDistanceMoved()));
         }
