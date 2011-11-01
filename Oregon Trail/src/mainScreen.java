@@ -94,8 +94,6 @@ public class mainScreen extends javax.swing.JPanel {
         map = new javax.swing.JPanel();
         moneyText = new javax.swing.JLabel();
         money = new javax.swing.JLabel();
-        lastLocation = new javax.swing.JLabel();
-        distanceToNext = new javax.swing.JLabel();
         
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -153,11 +151,11 @@ public class mainScreen extends javax.swing.JPanel {
         
         JLabel lastLocationText = new JLabel("Last Location:");
         
-        JLabel lastLocation = new JLabel("Independence, MO");
+        JLabel distanceToNextText = new JLabel("Distance to Next:");
         
-        JLabel distanceToNextText = new JLabel("Distance to Next Location:");
+        distanceToNext = new JLabel("000");
         
-        JLabel distanceToNext = new JLabel("000");
+        lastLocation = new JLabel("New label");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         layout.setHorizontalGroup(
@@ -165,26 +163,26 @@ public class mainScreen extends javax.swing.JPanel {
         		.addGroup(layout.createSequentialGroup()
         			.addContainerGap()
         			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(layout.createSequentialGroup()
-        					.addComponent(distanceText)
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addComponent(distanceTraveled, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
-        				.addGroup(layout.createSequentialGroup()
-        					.addComponent(foodText)
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addComponent(currentFood, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
-        				.addGroup(layout.createSequentialGroup()
-        					.addComponent(moneyText)
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addComponent(money, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
-        				.addComponent(distanceToNextText)
+        				.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        					.addGroup(layout.createSequentialGroup()
+        						.addComponent(distanceText)
+        						.addPreferredGap(ComponentPlacement.RELATED)
+        						.addComponent(distanceTraveled, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
+        					.addGroup(layout.createSequentialGroup()
+        						.addComponent(foodText)
+        						.addPreferredGap(ComponentPlacement.RELATED)
+        						.addComponent(currentFood, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
+        					.addGroup(layout.createSequentialGroup()
+        						.addComponent(moneyText)
+        						.addPreferredGap(ComponentPlacement.RELATED)
+        						.addComponent(money, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
+        					.addGroup(layout.createSequentialGroup()
+        						.addComponent(distanceToNextText)
+        						.addPreferredGap(ComponentPlacement.RELATED)
+        						.addComponent(distanceToNext)))
         				.addComponent(lastLocationText)
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(10)
-        					.addComponent(lastLocation)))
-        			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addComponent(distanceToNext)
-        			.addGap(19)
+        				.addComponent(lastLocation))
+        			.addGap(39)
         			.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
         				.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         				.addComponent(map, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -209,9 +207,9 @@ public class mainScreen extends javax.swing.JPanel {
         layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.TRAILING)
         		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap()
         			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
         				.addGroup(layout.createSequentialGroup()
-        					.addContainerGap()
         					.addGroup(layout.createParallelGroup(Alignment.LEADING)
         						.addComponent(map, GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
         						.addGroup(layout.createSequentialGroup()
@@ -235,7 +233,7 @@ public class mainScreen extends javax.swing.JPanel {
         					.addComponent(lastLocationText)
         					.addPreferredGap(ComponentPlacement.RELATED)
         					.addComponent(lastLocation)
-        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addGap(18)
         					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
         						.addComponent(distanceToNextText)
         						.addComponent(distanceToNext))
@@ -275,14 +273,14 @@ public class mainScreen extends javax.swing.JPanel {
     private javax.swing.JRadioButton meager;
     private javax.swing.JLabel money;
     private javax.swing.JLabel moneyText;
-    private javax.swing.JLabel lastLocation;
-    private javax.swing.JLabel distanceToNext;
     private javax.swing.ButtonGroup pace;
     private javax.swing.JLabel paceText;
     private javax.swing.JLabel rationText;
     private javax.swing.ButtonGroup rations;
     private javax.swing.JRadioButton steady;
     private javax.swing.JButton takeTurn;
+    private JLabel distanceToNext;
+    private JLabel lastLocation;
     // End of variables declaration//GEN-END:variables
 
     // This method returns the selected radio button in a button group
@@ -322,6 +320,7 @@ public class mainScreen extends javax.swing.JPanel {
 
             turn.takeTurn();
             lastLocation.setText(mapClass.getLastTown());
+            distanceToNext.setText(Integer.toString(mapClass.getDistanceToNext()));
             currentFood.setText(Integer.toString(turn.getCurrentFood()));
             distanceTraveled.setText(Integer.toString(turn.getDistanceMoved()));
         }
