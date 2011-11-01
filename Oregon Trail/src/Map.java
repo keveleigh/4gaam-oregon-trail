@@ -1,19 +1,42 @@
 import java.util.ArrayList;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Map.
+ *
+ * @param <T> the generic type
+ */
 public class Map<T> {
+	
+	/** The locations. */
 	Location[] locations = new Location[18];
+	
+	/** The current location. */
 	int distanceToNextTown, currentLocation;
+	
+	/** The na. */
 	public static Location na = new Location("N/A", 0);
+	
+	/** The on the trail. */
 	public static Location onTheTrail = new Location("On the trail", 0);
 	
+	/** The turn. */
 	Turn turn;
 	
+	/**
+	 * Instantiates a new map.
+	 *
+	 * @param turnReference the turn reference
+	 */
 	public Map(Turn turnReference){
 		turn = turnReference;
 		createLocations();
 	}
 	
+	/**
+	 * Creates the locations.
+	 */
 	private void createLocations() {
 		locations[0]  = new Location("Independence, MO", 0);
 		locations[1]  = new Location("Kansas River Crossing", 100);
@@ -35,6 +58,11 @@ public class Map<T> {
 		locations[17] = new Location("Oregon", 2100, true);
 	}
 	
+	/**
+	 * Gets the last loc.
+	 *
+	 * @return the last loc
+	 */
 	public Location getLastLoc() {
 		int totalDistTraveled = turn.getDistanceMoved();
 		Location toReturn = na;
@@ -51,6 +79,11 @@ public class Map<T> {
 		return toReturn;
 	}
 	
+	/**
+	 * Gets the distance to next.
+	 *
+	 * @return the distance to next
+	 */
 	public int getDistanceToNext() {
 		int totalDistTraveled = turn.getDistanceMoved();
 		int toReturn = 0;
@@ -71,6 +104,11 @@ public class Map<T> {
 		return toReturn;
 	}
 	
+	/**
+	 * Gets the curr location.
+	 *
+	 * @return the curr location
+	 */
 	public Location getCurrLocation() {
 		int totalDistTraveled = turn.getDistanceMoved();
 		Location toReturn = onTheTrail;
@@ -84,6 +122,12 @@ public class Map<T> {
 		return toReturn;
 	}
 	
+	/**
+	 * Gets the location.
+	 *
+	 * @param index the index
+	 * @return the location
+	 */
 	public Location getLocation(int index) {
 		return locations[index];
 	}

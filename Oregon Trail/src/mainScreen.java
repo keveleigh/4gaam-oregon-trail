@@ -11,18 +11,44 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.GroupLayout;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class mainScreen.
+ */
 public class mainScreen extends javax.swing.JPanel {
 
+    /** The game. */
     private GameInterface game;
+    
+    /** The leader. */
     private Leader leader;
+    
+    /** The wagon. */
     private Wagon wagon;
+    
+    /** The curr pace. */
     private Pace currPace;
+    
+    /** The curr ration. */
     private Rations currRation;
+    
+    /** The turn. */
     private Turn turn;
+    
+    /** The map class. */
     private Map mapClass;
+    
+    /** The wagon load. */
     private Inventory wagonLoad;
+    
+    /** The listen. */
     private TurnListener listen;
 
+    /**
+     * Instantiates a new main screen.
+     *
+     * @param face the face
+     */
     public mainScreen(GameInterface face) {
     	game = face;
         leader = game.getLeader();
@@ -269,33 +295,86 @@ public class mainScreen extends javax.swing.JPanel {
         this.setLayout(layout);
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    /** The barebones. */
     private javax.swing.JRadioButton barebones;
+    
+    /** The current food. */
     private javax.swing.JLabel currentFood;
+    
+    /** The distance text. */
     private javax.swing.JLabel distanceText;
+    
+    /** The distance traveled. */
     private javax.swing.JLabel distanceTraveled;
+    
+    /** The filling. */
     private javax.swing.JRadioButton filling;
+    
+    /** The food text. */
     private javax.swing.JLabel foodText;
+    
+    /** The grueling. */
     private javax.swing.JRadioButton grueling;
+    
+    /** The j scroll pane1. */
     private javax.swing.JScrollPane jScrollPane1;
+    
+    /** The j text area1. */
     private javax.swing.JTextArea jTextArea1;
+    
+    /** The leisurely. */
     private javax.swing.JRadioButton leisurely;
+    
+    /** The map. */
     private javax.swing.JPanel map;
+    
+    /** The meager. */
     private javax.swing.JRadioButton meager;
+    
+    /** The money. */
     private javax.swing.JLabel money;
+    
+    /** The money text. */
     private javax.swing.JLabel moneyText;
+    
+    /** The pace. */
     private javax.swing.ButtonGroup pace;
+    
+    /** The pace text. */
     private javax.swing.JLabel paceText;
+    
+    /** The ration text. */
     private javax.swing.JLabel rationText;
+    
+    /** The rations. */
     private javax.swing.ButtonGroup rations;
+    
+    /** The steady. */
     private javax.swing.JRadioButton steady;
+    
+    /** The take turn. */
     private javax.swing.JButton takeTurn;
+    
+    /** The distance to next. */
     private JLabel distanceToNext;
+    
+    /** The last location. */
     private JLabel lastLocation;
+    
+    /** The lbl current location. */
     private JLabel lblCurrentLocation;
+    
+    /** The curr location. */
     private JLabel currLocation;
     // End of variables declaration//GEN-END:variables
 
     // This method returns the selected radio button in a button group
+    /**
+     * Gets the selection.
+     *
+     * @param group the group
+     * @return the selection
+     */
     public static JRadioButton getSelection(ButtonGroup group) {
         for (Enumeration e = group.getElements(); e.hasMoreElements();) {
             JRadioButton b = (JRadioButton) e.nextElement();
@@ -306,8 +385,22 @@ public class mainScreen extends javax.swing.JPanel {
         return null;
     }
 
+    /**
+     * The listener interface for receiving turn events.
+     * The class that is interested in processing a turn
+     * event implements this interface, and the object created
+     * with that class is registered with a component using the
+     * component's <code>addTurnListener<code> method. When
+     * the turn event occurs, that object's appropriate
+     * method is invoked.
+     *
+     * @see TurnEvent
+     */
     private class TurnListener implements ActionListener {
 
+        /* (non-Javadoc)
+         * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+         */
         public void actionPerformed(ActionEvent e) {
 
             String p = getSelection(pace).getText();
