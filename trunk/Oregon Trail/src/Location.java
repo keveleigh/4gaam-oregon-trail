@@ -11,4 +11,8 @@ public class Location {
 	public String getName() {
 		return name;
 	}
+	
+	public int getDistance() {
+		return distance;
+	}
 }

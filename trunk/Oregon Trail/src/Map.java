@@ -5,7 +5,10 @@ public class Map<T> {
 	Location[] locations = new Location[18];
 	int distanceToNextTown, currentLocation;
 	
-	public Map(){
+	Turn turn;
+	
+	public Map(Turn turnReference){
+		turn = turnReference;
 		createLocations();
 	}
 	
@@ -30,7 +33,17 @@ public class Map<T> {
 		locations[17] = new Location("Oregon", 2100);
 	}
 	
-	public boolean atNextTown(){
-		return false;
+	public String getLastTown() {
+		int totalDistTraveled = turn.getDistanceMoved();
+		String toReturn = "Unknown";
+		
+		for (int i = locations.length-1; i >= 0; i--) {
+			if (totalDistTraveled > locations[i].getDistance()) {
+				toReturn = locations[i].getName();
+				break;
+			}
+		}
+		
+		return toReturn;
 	}
 }
