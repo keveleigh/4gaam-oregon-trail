@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Enumeration;
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JLabel;
 import javax.swing.GroupLayout.Alignment;
@@ -23,7 +24,16 @@ public class mainScreen extends javax.swing.JPanel {
     private TurnListener listen;
 
     public mainScreen(GameInterface face) {
-        initComponents();
+    	game = face;
+        leader = game.getLeader();
+        wagon = game.getWagon();
+        wagonLoad = wagon.getWagonLoad();
+        currPace = wagon.getCurrPace();
+        currRation = wagon.getCurrRations();
+    	turn = new Turn(wagon);
+        mapClass = new Map(turn);
+        
+    	initComponents();
         setBackground(Color.yellow);
         barebones.setBackground(Color.yellow);
         meager.setBackground(Color.yellow);
@@ -31,16 +41,7 @@ public class mainScreen extends javax.swing.JPanel {
         leisurely.setBackground(Color.yellow);
         steady.setBackground(Color.yellow);
         grueling.setBackground(Color.yellow);
-
-
-        game = face;
-        leader = game.getLeader();
-        wagon = game.getWagon();
-        wagonLoad = wagon.getWagonLoad();
-        currPace = wagon.getCurrPace();
-        currRation = wagon.getCurrRations();
-        turn = new Turn(wagon);
-        mapClass = new Map(turn);
+        
         listen = new TurnListener();
 
         takeTurn.addActionListener(listen);
@@ -153,9 +154,13 @@ public class mainScreen extends javax.swing.JPanel {
         
         JLabel distanceToNextText = new JLabel("Distance to Next:");
         
-        distanceToNext = new JLabel("000");
+        distanceToNext = new JLabel(Integer.toString(mapClass.getDistanceToNext()));
         
-        lastLocation = new JLabel("New label");
+        lastLocation = new JLabel("N/A");
+        
+        lblCurrentLocation = new JLabel("Current Location:");
+        
+        currLocation = new JLabel(mapClass.getLocation(0).getName());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         layout.setHorizontalGroup(
@@ -163,25 +168,26 @@ public class mainScreen extends javax.swing.JPanel {
         		.addGroup(layout.createSequentialGroup()
         			.addContainerGap()
         			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        					.addGroup(layout.createSequentialGroup()
-        						.addComponent(distanceText)
-        						.addPreferredGap(ComponentPlacement.RELATED)
-        						.addComponent(distanceTraveled, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
-        					.addGroup(layout.createSequentialGroup()
-        						.addComponent(foodText)
-        						.addPreferredGap(ComponentPlacement.RELATED)
-        						.addComponent(currentFood, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
-        					.addGroup(layout.createSequentialGroup()
-        						.addComponent(moneyText)
-        						.addPreferredGap(ComponentPlacement.RELATED)
-        						.addComponent(money, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
-        					.addGroup(layout.createSequentialGroup()
-        						.addComponent(distanceToNextText)
-        						.addPreferredGap(ComponentPlacement.RELATED)
-        						.addComponent(distanceToNext)))
+        				.addGroup(layout.createSequentialGroup()
+        					.addComponent(distanceText)
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(distanceTraveled, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(layout.createSequentialGroup()
+        					.addComponent(foodText)
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(currentFood, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(layout.createSequentialGroup()
+        					.addComponent(moneyText)
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(money, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(layout.createSequentialGroup()
+        					.addComponent(distanceToNextText)
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(distanceToNext))
         				.addComponent(lastLocationText)
-        				.addComponent(lastLocation))
+        				.addComponent(lastLocation)
+        				.addComponent(lblCurrentLocation)
+        				.addComponent(currLocation))
         			.addGap(39)
         			.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
         				.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -230,6 +236,10 @@ public class mainScreen extends javax.swing.JPanel {
         							.addComponent(grueling)))
         					.addGap(18))
         				.addGroup(layout.createSequentialGroup()
+        					.addComponent(lblCurrentLocation)
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(currLocation)
+        					.addGap(7)
         					.addComponent(lastLocationText)
         					.addPreferredGap(ComponentPlacement.RELATED)
         					.addComponent(lastLocation)
@@ -281,6 +291,8 @@ public class mainScreen extends javax.swing.JPanel {
     private javax.swing.JButton takeTurn;
     private JLabel distanceToNext;
     private JLabel lastLocation;
+    private JLabel lblCurrentLocation;
+    private JLabel currLocation;
     // End of variables declaration//GEN-END:variables
 
     // This method returns the selected radio button in a button group
@@ -318,8 +330,15 @@ public class mainScreen extends javax.swing.JPanel {
 
             money.setText(Integer.toString(leader.getMoney()));
 
-            turn.takeTurn();
-            lastLocation.setText(mapClass.getLastTown());
+            turn.takeTurn(mapClass);
+            
+            if (mapClass.getCurrLocation().isLast() == true) {
+            	JOptionPane.showMessageDialog(null,"You've reached Oregon!");
+            	takeTurn.setEnabled(false);
+            }
+            
+            currLocation.setText(mapClass.getCurrLocation().getName());
+            lastLocation.setText(mapClass.getLastLoc().getName());
             distanceToNext.setText(Integer.toString(mapClass.getDistanceToNext()));
             currentFood.setText(Integer.toString(turn.getCurrentFood()));
             distanceTraveled.setText(Integer.toString(turn.getDistanceMoved()));
