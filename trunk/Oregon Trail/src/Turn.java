@@ -1,3 +1,5 @@
+import javax.swing.*;
+
 
 /**
  * The Class Turn, which allows the user to take a turn
@@ -21,8 +23,16 @@ public class Turn {
         currentFood = wagonLoad.getQuantity(3);
     }
 
-    public void takeTurn() {
+    public void takeTurn(Map mapClass) {
+        Location lastTown = mapClass.getLastLoc();
         distanceMoved += wagon.getCurrPace().getPace();
+        Location lastTown2 = mapClass.getLastLoc();
+        
+        if (lastTown != Map.na && !lastTown.equals(lastTown2)) {
+        	// The two towns aren't the same, so you advanced a town
+        	distanceMoved = mapClass.getLastLoc().getDistance();
+        }
+        
         if(currentFood > 0)
             currentFood -= (wagon.getCurrRations().getRations())*(wagon.getMembers().size() + 1);
     }
@@ -32,6 +42,10 @@ public class Turn {
      */
     public int getDistanceMoved() {
         return distanceMoved;
+    }
+    
+    public void setDistanceMoved(int dist) {
+    	distanceMoved = dist;
     }
 
     /**
