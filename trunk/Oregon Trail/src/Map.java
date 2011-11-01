@@ -46,4 +46,24 @@ public class Map<T> {
 		
 		return toReturn;
 	}
+	
+	public int getDistanceToNext() {
+		int totalDistTraveled = turn.getDistanceMoved();
+		int toReturn = 0;
+		
+		boolean checkedOregon = false;
+		for (int i = locations.length-1; i >= 0; i--) {
+			if (totalDistTraveled > locations[i].getDistance()) {
+				if (checkedOregon == false)
+					return 0;
+				else {
+					toReturn = locations[i+1].getDistance()-totalDistTraveled;
+					break;
+				}
+			}
+			checkedOregon = true;
+		}
+		
+		return toReturn;
+	}
 }
