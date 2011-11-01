@@ -52,7 +52,11 @@ public class Turn {
         }
         
         if(currentFood > 0)
+        {
             currentFood -= (wagon.getCurrRations().getRations())*(wagon.getMembers().size() + 1);
+            if (currentFood < 0)
+            	currentFood = 0;
+        }
     }
 
     /**
