@@ -435,6 +435,7 @@ public class mainScreen extends javax.swing.JPanel {
             distanceToNext.setText(Integer.toString(mapClass.getDistanceToNext()));
             currentFood.setText(Integer.toString(turn.getCurrentFood()));
             distanceTraveled.setText(Integer.toString(turn.getDistanceMoved()));
+            
         }
     }
 }
