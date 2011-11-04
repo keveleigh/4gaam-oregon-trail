@@ -22,6 +22,10 @@ public class Shop
 		playerWagon = w;
 	}
 	
+	public Shop()
+	{
+		
+	}
 	/**
 	 * Buy.
 	 *
@@ -94,5 +98,10 @@ public class Shop
 			hasRoom = true;
 		
 		return hasRoom;
+	}
+	
+	public void enter()
+	{
+		//update leader and wagon and shit
 	}
 }

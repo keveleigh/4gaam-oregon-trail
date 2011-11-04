@@ -14,15 +14,24 @@ public class Location {
 	/** The last one. */
 	boolean lastOne;
 	
+	Shop myShop;
+	
 	/**
 	 * Instantiates a new location.
 	 *
 	 * @param name the name
 	 * @param distance the distance
 	 */
+	public Location(String name, int distance, Shop myShop){
+		this.name = name;
+		this.distance = distance;
+		this.myShop = myShop;
+	}
+	
 	public Location(String name, int distance){
 		this.name = name;
 		this.distance = distance;
+		myShop = null;
 	}
 	
 	/**
