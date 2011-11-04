@@ -76,7 +76,7 @@ public class configScreen extends javax.swing.JPanel {
         member4 = new javax.swing.JTextField();
         partyMembersLabel = new javax.swing.JLabel();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        begin = new javax.swing.JToggleButton();
+        begin = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(650, 323));
 
@@ -262,7 +262,7 @@ public class configScreen extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton banker;
     private javax.swing.JRadioButton barebones;
-    private javax.swing.JToggleButton begin;
+    private javax.swing.JButton begin;
     private javax.swing.JRadioButton carpenter;
     private javax.swing.JRadioButton farmer;
     private javax.swing.Box.Filler filler1;
@@ -387,7 +387,7 @@ public class configScreen extends javax.swing.JPanel {
             }
 
             if (changeScreen == true) {
-                Shop shop = new Shop(game.getWagon().getLeader(), game.getWagon());
+                Shop shop = new Shop(game.getLeader(), game.getWagon());
                 JPanel panel = new generalStore(shop, game);
                 panel.setSize(new Dimension(450, 300));
                 game.updateBounds(panel.getWidth(), panel.getHeight());

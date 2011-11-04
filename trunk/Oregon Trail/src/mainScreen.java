@@ -1,10 +1,12 @@
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Enumeration;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JLabel;
 import javax.swing.GroupLayout.Alignment;
@@ -425,16 +427,25 @@ public class mainScreen extends javax.swing.JPanel {
 
             turn.takeTurn(mapClass);
             
-            if (mapClass.getCurrLocation().isLast() == true) {
-            	JOptionPane.showMessageDialog(null,"You've reached Oregon!");
-            	takeTurn.setEnabled(false);
-            }
-            
             currLocation.setText(mapClass.getCurrLocation().getName());
             lastLocation.setText(mapClass.getLastLoc().getName());
             distanceToNext.setText(Integer.toString(mapClass.getDistanceToNext()));
             currentFood.setText(Integer.toString(turn.getCurrentFood()));
             distanceTraveled.setText(Integer.toString(turn.getDistanceMoved()));
+            
+            if (mapClass.getCurrLocation() != Map.na && mapClass.getCurrLocation().myShop != null)
+            {
+            	Shop shop = new Shop(game.getLeader(), game.getWagon());
+                JPanel panel = new generalStore(shop, game);
+                panel.setSize(new Dimension(450, 300));
+                game.updateBounds(panel.getWidth(), panel.getHeight());
+                game.changeDisplay(panel);
+            }
+            
+            if (mapClass.getCurrLocation().isLast() == true) {
+            	JOptionPane.showMessageDialog(null,"You've reached Oregon!");
+            	takeTurn.setEnabled(false);
+            }
             
         }
     }

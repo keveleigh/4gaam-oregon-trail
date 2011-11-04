@@ -16,10 +16,10 @@ public class Map<T> {
 	int distanceToNextTown, currentLocation;
 	
 	/** The na. */
-	public static Location na = new Location("N/A", 0);
+	public static Location na = new Location("N/A", 0, null);
 	
 	/** The on the trail. */
-	public static Location onTheTrail = new Location("On the trail", 0);
+	public static Location onTheTrail = new Location("On the trail", 0, null);
 	
 	/** The turn. */
 	Turn turn;
@@ -41,18 +41,18 @@ public class Map<T> {
 		locations[0]  = new Location("Independence, MO", 0);
 		locations[1]  = new Location("Kansas River Crossing", 100);
 		locations[2]  = new Location("Big Blue River Crossing", 225);
-		locations[3]  = new Location("Fort Kearney", 340);
+		locations[3]  = new Location("Fort Kearney", 340, new Shop());
 		locations[4]  = new Location("Chimney Rock", 590);
-		locations[5]  = new Location("Fort Laramie", 675);
+		locations[5]  = new Location("Fort Laramie", 675, new Shop());
 		locations[6]  = new Location("Independence Rock", 865);
 		locations[7]  = new Location("South Pass", 970);
 		locations[8]  = new Location("Green River", 1025);
 		locations[9]  = new Location("Soda Springs", 1170);
-		locations[10] = new Location("Fort Hall", 1225);
+		locations[10] = new Location("Fort Hall", 1225, new Shop());
 		locations[11] = new Location("Snake River Crossing", 1410);
-		locations[12] = new Location("Fort Boise", 1520);
+		locations[12] = new Location("Fort Boise", 1520, new Shop());
 		locations[13] = new Location("Blue Mountains", 1680);
-		locations[14] = new Location("Fort Walla Walla", 1740);
+		locations[14] = new Location("Fort Walla Walla", 1740, new Shop());
 		locations[15] = new Location("The Dalles", 1860);
 		locations[16] = new Location("Barlow Toll Road", 1960);
 		locations[17] = new Location("Oregon", 2100, true);
