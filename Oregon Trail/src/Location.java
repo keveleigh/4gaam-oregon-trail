@@ -11,8 +11,8 @@ public class Location {
 	/** The distance. */
 	int distance; //distance from beginning
 	
-	/** The last one. */
-	boolean lastOne;
+	/** If this location is special it's stored here */
+	String special;
 	
 	Shop myShop;
 	
@@ -26,12 +26,14 @@ public class Location {
 		this.name = name;
 		this.distance = distance;
 		this.myShop = myShop;
+		special = "";
 	}
 	
 	public Location(String name, int distance){
 		this.name = name;
 		this.distance = distance;
 		myShop = null;
+		special = "";
 	}
 	
 	/**
@@ -41,9 +43,9 @@ public class Location {
 	 * @param distance the distance
 	 * @param lastOne the last one
 	 */
-	public Location(String name, int distance, boolean lastOne) {
-		this(name, distance);
-		this.lastOne = lastOne;
+	public Location(String name, int distance, Shop myShop, String special) {
+		this(name, distance, myShop);
+		this.special = special;
 	}
 
 	/**
@@ -70,7 +72,15 @@ public class Location {
 	 * @return true, if is last
 	 */
 	public boolean isLast() {
-		if (lastOne == true) {
+		if (special.equals("last")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean isRiver() {
+		if (special.equals("river")) {
 			return true;
 		} else {
 			return false;
