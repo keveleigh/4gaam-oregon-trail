@@ -9,21 +9,17 @@ import javax.swing.JPanel;
  * the user is taking a turn and updates accordingly
  * 
  * @author Four Guys and a Mann
- * @version v0.6 10/20/11
+ * @version v1.1 11/9/11
  */
 public class GameInterface extends JFrame {
 
     /** The display. */
     private JPanel display;
     
-    /** The leader. */
-    private Leader leader;
-    
     /** The wagon. */
     private Wagon wagon;
     
-    /** The members. */
-    private ArrayList<Member> members;
+    private Map map;
 
     /**
      * Instantiates a new game interface.
@@ -48,6 +44,7 @@ public class GameInterface extends JFrame {
     public void changeDisplay(JPanel panel){
         remove(display);
         display = panel;
+        updateBounds(panel.getWidth(), panel.getHeight());
         add(display);
         validate();
     }
@@ -83,24 +80,6 @@ public class GameInterface extends JFrame {
     }
 
     /**
-     * Gets the leader.
-     *
-     * @return the leader
-     */
-    public Leader getLeader() {
-        return leader;
-    }
-
-    /**
-     * Sets the leader.
-     *
-     * @param leader the leader to set
-     */
-    public void setLeader(Leader leader) {
-        this.leader = leader;
-    }
-
-    /**
      * Gets the wagon.
      *
      * @return the wagon
@@ -117,23 +96,23 @@ public class GameInterface extends JFrame {
     public void setWagon(Wagon wagon) {
         this.wagon = wagon;
     }
-
+    
     /**
-     * Gets the members.
+     * Gets the map.
      *
-     * @return the members
+     * @return The map
      */
-    public ArrayList<Member> getMembers() {
-        return members;
+    public Map getMap() {
+        return map;
     }
 
     /**
-     * Sets the members.
+     * Sets the map.
      *
-     * @param members the members to set
+     * @param map The map to set
      */
-    public void setMembers(ArrayList<Member> members) {
-        this.members = members;
+    public void setMap(Map map) {
+        this.map = map;
     }
 }
 
