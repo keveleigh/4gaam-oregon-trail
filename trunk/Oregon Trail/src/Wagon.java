@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * This is one of the main classes of the game
  * 
  * @author Four Guys and a Mann
- * @version v1 10/10/11
+ * @version v1.0 10/10/11
  */
 public class Wagon {
 

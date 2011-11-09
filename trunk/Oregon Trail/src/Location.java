@@ -1,7 +1,9 @@
-
-// TODO: Auto-generated Javadoc
 /**
- * The Class Location.
+ * The location class.
+ * This class represents the various locations in the game.
+ * 
+ * @author Four Guys and a Mann
+ * @version v1.5 11/9/11
  */
 public class Location {
 	
@@ -17,18 +19,11 @@ public class Location {
 	Shop myShop;
 	
 	/**
-	 * Instantiates a new location.
+	 * Instantiates a new location. The default constructor.
 	 *
-	 * @param name the name
-	 * @param distance the distance
+	 * @param name The name of the location
+	 * @param distance The distance from the start
 	 */
-	public Location(String name, int distance, Shop myShop){
-		this.name = name;
-		this.distance = distance;
-		this.myShop = myShop;
-		special = "";
-	}
-	
 	public Location(String name, int distance){
 		this.name = name;
 		this.distance = distance;
@@ -39,12 +34,26 @@ public class Location {
 	/**
 	 * Instantiates a new location.
 	 *
-	 * @param name the name
-	 * @param distance the distance
-	 * @param lastOne the last one
+	 * @param name The name of the location
+	 * @param distance The distance from the start
+	 * @param myShop The location's shop
 	 */
-	public Location(String name, int distance, Shop myShop, String special) {
-		this(name, distance, myShop);
+	public Location(String name, int distance, Shop myShop){
+		this(name, distance);
+		this.myShop = myShop;
+		special = "";
+	}
+	
+	/**
+	 * Instantiates a new location.
+	 *
+	 * @param name The name of the location
+	 * @param distance The distance from the start
+	 * @param special Any special information about the location
+	 */
+	public Location(String name, int distance, String special) {
+		this(name, distance);
+		this.myShop = null;
 		this.special = special;
 	}
 

@@ -2,7 +2,7 @@
  * The Class Shop.
  *
  * @author Four Guys and a Mann
- * @version v1.1 10/20/11
+ * @version v1.2 11/9/11
  */
 public class Shop 
 {
@@ -16,16 +16,10 @@ public class Shop
 	/**
 	 * Instantiates a new shop.
 	 */
-	public Shop(Leader l, Wagon w)
-	{
-		myLeader = l;
-		playerWagon = w;
-	}
-	
 	public Shop()
 	{
-		
 	}
+	
 	/**
 	 * Buy.
 	 *
@@ -83,9 +77,8 @@ public class Shop
 	/**
 	 * Check weight.
 	 *
-	 * @param i the i
-	 * @param quant the quant
-	 * @return true, if successful
+	 * @param i The item(s) to be purchased
+	 * @return true, if the purchase is successful
 	 */
 	public boolean checkWeight(Item i)
 	{
@@ -100,8 +93,14 @@ public class Shop
 		return hasRoom;
 	}
 	
-	public void enter()
+	/**
+	 * Updates the shop with the player's current game state.
+	 *
+	 * @param Wagon w The current wagon
+	 */
+	public void enter(Wagon w)
 	{
-		//update leader and wagon and shit
+		myLeader = w.getLeader();
+		playerWagon = w;
 	}
 }

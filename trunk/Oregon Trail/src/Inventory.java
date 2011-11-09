@@ -5,7 +5,7 @@ import java.util.*;
  * The Class Inventory.
  * 
  * @author Four Guys and a Mann
- * @version v1.1 10/20/11
+ * @version v1.15 11/9/11
  */
 public class Inventory {
 
@@ -35,7 +35,7 @@ public class Inventory {
 	/**
 	 * Adds an item.
 	 *
-	 * @param item the item
+	 * @param item The item to be added
 	 */
 	public void add(Item item){
 		if (currentWeight + item.getTotalWeight() > MAX_WEIGHT)
@@ -52,7 +52,6 @@ public class Inventory {
 				{
 					current.quantity += item.getQuantity();
 					currentWeight = currentWeight + item.getTotalWeight();
-					System.out.println(item.name + " successfully added.");
 				}
 			}
 		}
@@ -60,7 +59,7 @@ public class Inventory {
     /**
      * Removes an item.
      *
-     * @param item the item
+     * @param item The item to be removed
      */
     public void remove(Item item) {
         if (currentWeight == 0) {
@@ -69,12 +68,16 @@ public class Inventory {
             for (int index = 0; index < items.size(); index++) {
                 Item current = items.get(index);
                 if ((current.name).equals(item.name)) {
-                    if (current.getQuantity() < item.getQuantity()) {
-                        System.out.println("You don't have that many items.");
+                	if (current.getQuantity() == 0) {
+                		System.out.println("You don't have any " + item.name + "."); //This should probably be replaced at some point!
+                	}
+                	else if (current.getQuantity() < item.getQuantity()) {
+                    	current.quantity = 0;
+                        currentWeight = 0;
+                        System.out.println("You have run out of " + item.name + "."); //This should probably be replaced at some point!
                     } else {
                         current.quantity -= item.getQuantity();
                         currentWeight = currentWeight - item.getTotalWeight();
-                        System.out.println("Items successfully removed.");
                     }
                 }
             }
@@ -91,7 +94,8 @@ public class Inventory {
      * 5 = tongue
      * 6 = wheels
      *
-     * @param int The amount of the item stored.
+     * @param int i The amount of the item stored.
+     * @return The amount of the specified item currently in the inventory.
      */
     public int getQuantity(int i) {
         Item currentItem = items.get(i);
