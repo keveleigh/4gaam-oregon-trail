@@ -468,7 +468,8 @@ public class mainScreen extends JPanel {
 						"You have flirted with danger but still made it safely!");
 					} else if (!mapClass.getRiver().checkFloat()){
 						int lostItemCount = (int) ((Math.random()*40));
-						wagonLoad.items.get(3).setQuantity(wagonLoad.getQuantity(3)-lostItemCount);
+						wagonLoad.remove(new Food(lostItemCount));
+						currentFood.setText(Integer.toString(wagonLoad.getQuantity(3)));
 						JOptionPane.showMessageDialog(game, "Your wagon has tipped over and " +
 								"you have lost " + lostItemCount + " pounds of food.");
 					}
@@ -485,7 +486,8 @@ public class mainScreen extends JPanel {
 						"You have flirted with danger but still made it safely!");
 					} else if (!mapClass.getRiver().checkFord()){
 						int lostItemCount = (int) ((Math.random()*70)+30);
-						wagonLoad.items.get(3).setQuantity(wagonLoad.getQuantity(3)-lostItemCount);
+						wagonLoad.remove(new Food(lostItemCount));
+						currentFood.setText(Integer.toString(wagonLoad.getQuantity(3)));
 						JOptionPane.showMessageDialog(game, "Your wagon has tipped over " +
 								"and you have lost " + lostItemCount + " pounds of food.");
 					}
