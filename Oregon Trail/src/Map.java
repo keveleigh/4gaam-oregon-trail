@@ -149,6 +149,10 @@ public class Map {
 		return locations[index];
 	}
 	
+	public River getRiver(){
+		return (River) getCurrLocation();
+	}
+	
 	public Wagon getWagon()
 	{
 		return wagon;
