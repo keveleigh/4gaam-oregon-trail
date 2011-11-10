@@ -134,7 +134,7 @@ public class mainScreen extends JPanel {
 		steady.setBackground(Color.yellow);
 		grueling.setBackground(Color.yellow);
 
-//		enterShop.addActionListener(new EnterListener());
+		//		enterShop.addActionListener(new EnterListener());
 		takeTurn.addActionListener(new TurnListener());
 
 		if (currPace == Pace.Leisurely) {
@@ -389,7 +389,7 @@ public class mainScreen extends JPanel {
 		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 		 */
 		public void actionPerformed(ActionEvent e) {
-//        	enterShop.setEnabled(false);
+			//        	enterShop.setEnabled(false);
 
 			String p = getSelection(pace).getText();
 			if (p.equals("Leisurely")) {
@@ -427,7 +427,7 @@ public class mainScreen extends JPanel {
 				game.setWagon(wagon);
 				game.setMap(mapClass);
 				Object[] options = {"Enter shop",
-						"Continue on the trail"};
+				"Continue on the trail"};
 				int n = JOptionPane.showOptionDialog(game,
 						"You have arrived at " + mapClass.getCurrLocation().getName()
 						+ "\nWhat would you like do?",
@@ -437,14 +437,14 @@ public class mainScreen extends JPanel {
 						null,
 						options,
 						options[0]);
-				
+
 				if (n == 0 ) {
 					JPanel panel = new generalStore(mapClass.getCurrLocation().myShop, game);
 					panel.setSize(new Dimension(450, 300));
 					game.changeDisplay(panel);					
 				} else if (n == 1) {
 				}
-//            	enterShop.setEnabled(true);
+				//            	enterShop.setEnabled(true);
 			}
 
 			if (mapClass.getCurrLocation().isRiver()) {
@@ -461,7 +461,22 @@ public class mainScreen extends JPanel {
 						options,
 						options[0]);
 
-				// Handle choices
+				// Handle choices, can use switch statement instead
+				while (n == -1){
+					if (n == -1){
+						JOptionPane.showMessageDialog(game, "You must pick a choice!");
+						n = JOptionPane.showOptionDialog(game,
+								"You have approached the " + mapClass.getCurrLocation().getName()
+								+ "\nWhat do you do?",
+								"River Crossing",
+								JOptionPane.YES_NO_CANCEL_OPTION,
+								JOptionPane.QUESTION_MESSAGE,
+								null,
+								options,
+								options[0]);
+					}
+				}
+
 				if (n == 0 ) {
 					if (mapClass.getRiver().checkFloat()){
 						JOptionPane.showMessageDialog(game, "Congratulations!  " +
@@ -501,7 +516,7 @@ public class mainScreen extends JPanel {
 		}
 	}
 	//    For future use:
-	
+
 	//    private class EnterListener implements ActionListener {
 	//
 	//        public void actionPerformed(ActionEvent e) {
