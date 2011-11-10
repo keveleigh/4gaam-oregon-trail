@@ -447,20 +447,7 @@ public class mainScreen extends JPanel {
 						options[0]);
 
 				// Handle choices
-				switch (n){
-				case -1: 
-					JOptionPane.showMessageDialog(game, "You must pick a choice!");
-					int m = JOptionPane.showOptionDialog(game,
-							"You have approached the " + mapClass.getCurrLocation().getName()
-							+ "\nWhat do you do?",
-							"River Crossing",
-							JOptionPane.YES_NO_CANCEL_OPTION,
-							JOptionPane.QUESTION_MESSAGE,
-							null,
-							options,
-							options[0]);
-					n = m;
-				case 0: 
+				if (n == 0 ) {
 					if (mapClass.getRiver().checkFloat()){
 						JOptionPane.showMessageDialog(game, "Congratulations!  " +
 						"You have flirted with danger but still made it safely!");
@@ -469,14 +456,14 @@ public class mainScreen extends JPanel {
 						wagonLoad.items.get(3).setQuantity(wagonLoad.getQuantity(3)-lostItemCount);
 						JOptionPane.showMessageDialog(game, "Your wagon has tipped over and " +
 								"you have lost " + lostItemCount + " pounds of food.");
-					} break;
-				case 1:
+					}
+				} else if (n == 1) {
 					if (mapClass.getRiver().checkFerry()){
 						leader.setMoney(leader.money-200); //ferry costs $200
 						JOptionPane.showMessageDialog(game, "You have paid $5 to cross " +
 						"the river safely.");
-					} break;
-				case 2:
+					}
+				} else if (n == 2) {
 					if (mapClass.getRiver().checkFord()){
 						JOptionPane.showMessageDialog(game, "Congratulations!  " +
 						"You have flirted with danger but still made it safely!");
@@ -485,7 +472,7 @@ public class mainScreen extends JPanel {
 						wagonLoad.items.get(3).setQuantity(wagonLoad.getQuantity(3)-lostItemCount);
 						JOptionPane.showMessageDialog(game, "Your wagon has tipped over " +
 								"and you have lost " + lostItemCount + " pounds of food.");
-					} break;
+					}
 				}
 			}
 

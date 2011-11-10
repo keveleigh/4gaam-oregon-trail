@@ -41,7 +41,7 @@ public class River extends Location{
 	 */
 	public static void setDepth(int depth) {
 		River.depth = depth;
-	}
+	} 
 
 	/**
 	 * Gets the width.
