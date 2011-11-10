@@ -432,6 +432,30 @@ public class mainScreen extends JPanel {
 //            	enterShop.setEnabled(true);
             }
             
+            if (mapClass.getCurrLocation().isRiver()) {
+            	Object[] options = {"Caulk and Float",
+			                        "Take Ferry",
+			                        "Ford the River"};
+			    int n = JOptionPane.showOptionDialog(game,
+			        "You have approached the " + mapClass.getCurrLocation().getName()
+			        + "\nWhat do you do?",
+			        "River Crossing",
+			        JOptionPane.YES_NO_CANCEL_OPTION,
+			        JOptionPane.QUESTION_MESSAGE,
+			        null,
+			        options,
+			        options[0]);
+			    
+			    // Handle choices
+			    if (n == JOptionPane.YES_OPTION) {
+			    	
+			    } else if (n == JOptionPane.NO_OPTION) {
+			    	
+			    } else if (n == JOptionPane.CANCEL_OPTION) {
+			    	
+			    }
+            }
+            
             if (mapClass.getCurrLocation().isLast() == true) {
             	JOptionPane.showMessageDialog(null,"You've reached Oregon!");
             	takeTurn.setEnabled(false);
