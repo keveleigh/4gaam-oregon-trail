@@ -51,9 +51,9 @@ public class Location {
 	 * @param distance The distance from the start
 	 * @param special Any special information about the location
 	 */
-	public Location(String name, int distance, String special) {
+	public Location(String name, int distance, Shop myShop, String special) {
 		this(name, distance);
-		this.myShop = null;
+		this.myShop = myShop;
 		this.special = special;
 	}
 

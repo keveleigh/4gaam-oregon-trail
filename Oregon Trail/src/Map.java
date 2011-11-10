@@ -40,23 +40,23 @@ public class Map {
 	 */
 	private void createLocations() {
 		locations[0]  = new Location("Independence, MO", 0);
-		locations[1]  = new Location("Kansas River Crossing", 100, "river");
-		locations[2]  = new Location("Big Blue River Crossing", 225, "river");
+		locations[1]  = new River("Kansas River Crossing", 100, 3, 100);
+		locations[2]  = new River("Big Blue River Crossing", 225, 5, 120);
 		locations[3]  = new Location("Fort Kearney", 340, new Shop());
 		locations[4]  = new Location("Chimney Rock", 590);
 		locations[5]  = new Location("Fort Laramie", 675, new Shop());
 		locations[6]  = new Location("Independence Rock", 865);
 		locations[7]  = new Location("South Pass", 970);
-		locations[8]  = new Location("Green River", 1025, "river");
+		locations[8]  = new River("Green River", 1025, 2, 135);
 		locations[9]  = new Location("Soda Springs", 1170);
 		locations[10] = new Location("Fort Hall", 1225, new Shop());
-		locations[11] = new Location("Snake River Crossing", 1410, "river");
+		locations[11] = new River("Snake River Crossing", 1410, 8, 100);
 		locations[12] = new Location("Fort Boise", 1520, new Shop());
 		locations[13] = new Location("Blue Mountains", 1680);
 		locations[14] = new Location("Fort Walla Walla", 1740, new Shop());
 		locations[15] = new Location("The Dalles", 1860);
 		locations[16] = new Location("Barlow Toll Road", 1960);
-		locations[17] = new Location("Oregon", 2100, "last");
+		locations[17] = new Location("Oregon", 2100, null, "last");
 	}
 	
 	public void takeTurn(Wagon wagon) {

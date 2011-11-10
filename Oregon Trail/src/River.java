@@ -19,8 +19,8 @@ public class River extends Location{
 	 * @param width the width
 	 * @param distance the distance
 	 */
-	public River(String name, int depth, int width, int distance){
-		super(name, distance);
+	public River(String name, int distance, int depth, int width){
+		super(name, distance, null, "river");
 		this.depth = depth;
 		this.width = width;
 	}
