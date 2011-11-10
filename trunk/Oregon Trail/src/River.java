@@ -4,13 +4,13 @@
  * The Class River.
  */
 public class River extends Location{
-	
+
 	/** The name. */
 	private static String name;
-	
+
 	/** The distance. */
 	private static int depth, width, distance;
-	
+
 	/**
 	 * Instantiates a new river.
 	 *
@@ -60,8 +60,35 @@ public class River extends Location{
 	public static void setWidth(int width) {
 		River.width = width;
 	}
+
+	public boolean checkFloat(){
+		if (depth >= 3){
+			if (Math.random() > .75)
+				return false;
+		} else if (depth >= 6){
+			if (Math.random() > .5)
+				return false;
+		} else if (depth >= 9){
+			if (Math.random() > .25)
+				return false;
+		} 
+		return true;
+	}
+
+	public boolean checkFerry(){
+		return true;
+	}
 	
-	public boolean disasterCheck(){
+	public boolean checkFord(){
+		if (depth >= 3){
+			return false;
+		} else if (Math.random() > .75){
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean disaster(){
 		return false;
 	}
 }
