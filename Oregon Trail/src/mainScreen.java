@@ -134,7 +134,7 @@ public class mainScreen extends JPanel {
 		steady.setBackground(Color.yellow);
 		grueling.setBackground(Color.yellow);
 
-		//      enterShop.addActionListener(new EnterListener());
+//		enterShop.addActionListener(new EnterListener());
 		takeTurn.addActionListener(new TurnListener());
 
 		if (currPace == Pace.Leisurely) {
@@ -230,7 +230,7 @@ public class mainScreen extends JPanel {
 
 		moneyText.setText("Money:");
 
-		money.setText(Integer.toString(leader.getMoney()));
+		money.setText("$"+Integer.toString(leader.getMoney()));
 
 		jTextArea1.setColumns(20);
 		jTextArea1.setRows(5);
@@ -389,7 +389,7 @@ public class mainScreen extends JPanel {
 		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 		 */
 		public void actionPerformed(ActionEvent e) {
-			//        	enterShop.setEnabled(false);
+//        	enterShop.setEnabled(false);
 
 			String p = getSelection(pace).getText();
 			if (p.equals("Leisurely")) {
@@ -409,7 +409,7 @@ public class mainScreen extends JPanel {
 				wagon.setCurrRations(Rations.Filling);
 			}
 
-			money.setText(Integer.toString(leader.getMoney()));
+			money.setText("$"+Integer.toString(leader.getMoney()));
 
 			mapClass.takeTurn(wagon);
 
@@ -426,15 +426,30 @@ public class mainScreen extends JPanel {
 			{
 				game.setWagon(wagon);
 				game.setMap(mapClass);
-				JPanel panel = new generalStore(mapClass.getCurrLocation().myShop, game);
-				panel.setSize(new Dimension(450, 300));
-				game.changeDisplay(panel);
-				//            	enterShop.setEnabled(true);
+				Object[] options = {"Enter shop",
+						"Continue on the trail"};
+				int n = JOptionPane.showOptionDialog(game,
+						"You have arrived at " + mapClass.getCurrLocation().getName()
+						+ "\nWhat would you like do?",
+						"Town",
+						JOptionPane.YES_NO_OPTION,
+						JOptionPane.INFORMATION_MESSAGE,
+						null,
+						options,
+						options[0]);
+				
+				if (n == 0 ) {
+					JPanel panel = new generalStore(mapClass.getCurrLocation().myShop, game);
+					panel.setSize(new Dimension(450, 300));
+					game.changeDisplay(panel);					
+				} else if (n == 1) {
+				}
+//            	enterShop.setEnabled(true);
 			}
 
 			if (mapClass.getCurrLocation().isRiver()) {
 				Object[] options = {"Caulk and Float",
-						"Take Ferry",
+						"Take Ferry ($200)",
 				"Ford the River"};
 				int n = JOptionPane.showOptionDialog(game,
 						"You have approached the " + mapClass.getCurrLocation().getName()
@@ -460,7 +475,8 @@ public class mainScreen extends JPanel {
 				} else if (n == 1) {
 					if (mapClass.getRiver().checkFerry()){
 						leader.setMoney(leader.money-200); //ferry costs $200
-						JOptionPane.showMessageDialog(game, "You have paid $5 to cross " +
+						money.setText("$"+Integer.toString(leader.getMoney()));
+						JOptionPane.showMessageDialog(game, "You have paid $200 to cross " +
 						"the river safely.");
 					}
 				} else if (n == 2) {
@@ -482,7 +498,8 @@ public class mainScreen extends JPanel {
 			}
 		}
 	}
-	//    
+	//    For future use:
+	
 	//    private class EnterListener implements ActionListener {
 	//
 	//        public void actionPerformed(ActionEvent e) {
