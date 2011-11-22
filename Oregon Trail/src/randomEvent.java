@@ -17,6 +17,9 @@ public class randomEvent {
 	}
 
 	public int generateEvent(){
+		/*
+		 * 0 is getSick, 1 is weather, 2 is oxDead, 3 is foundItem, 4 nothing happens
+		 */
 		if (Event()){
 			return random.nextInt(3);
 		} else {
@@ -41,6 +44,27 @@ public class randomEvent {
 			return wagon.getMembers().get(person).getName() + " has a case of severe diarrhea.";
 		} else {
 			return "Your members have just survived a terrible storm.  Nobody got sick.";
+		}
+	}
+	
+	public String weather(){
+		int weather = random.nextInt(2);
+		/*
+		 * 0 is thunderstorm, 1 is a sandstorm, 2 is hail
+		 */
+		if (weather ==0){
+			getSick();
+			return "You have made it through the thunderstorm.  Hopefully all your members are still alive.";
+		} else if (weather ==1){
+			//TODO implement when time is ready
+			return "You have lost 5 days through the sandstorm";
+		} else if (weather ==2){
+			for (int i = 0; i < wagon.getMembers().size(); i++){
+				wagon.getMembers().get(i).getMyHealth().decrease(30);
+			}
+			return "You and your members have been struck by hail.";
+		} else {
+			return "You have made it past a terrible storm but made it through safely.";
 		}
 	}
 
