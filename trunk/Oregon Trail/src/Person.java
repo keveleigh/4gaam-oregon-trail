@@ -22,7 +22,7 @@ public abstract class Person
 	public Person(String n)
 	{
 		name = n;
-		myHealth = Health.Excellent; 
+		myHealth = new Health();
 	}
 	
 	/**
@@ -46,23 +46,13 @@ public abstract class Person
 	}
 
 	/**
-	 * Gets the my health.
+	 * Gets the health.
 	 *
-	 * @return the my health
+	 * @return the health
 	 */
 	public Health getMyHealth() 
 	{
 		return myHealth;
-	}
-
-	/**
-	 * Sets the my health.
-	 *
-	 * @param myHealth the new my health
-	 */
-	public void setMyHealth(Health myHealth) 
-	{
-		this.myHealth = myHealth;
 	}
 
 }
