@@ -17,7 +17,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 public class mainScreen extends JPanel {
 
 	/** The game. */
-	private GameInterface game;
+	private static GameInterface game;
 
 	/** The leader. */
 	private Leader leader;
@@ -537,4 +537,8 @@ public class mainScreen extends JPanel {
 	//            game.changeDisplay(panel);
 	//        }
 	//    }
+	
+	public static void randEventPopup(String eventOutcome){
+		JOptionPane.showMessageDialog(game, eventOutcome);
+	}
 }
