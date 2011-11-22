@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 /**
  * The Map class.
  * This class keeps track of the player's location.
@@ -80,12 +82,17 @@ public class Map {
         int eventType = randEvent.generateEvent();
         if (eventType ==0){
         	eventOutcome = randEvent.getSick();
+        	mainScreen.randEventPopup(eventOutcome);
         } else if (eventType ==1){
         	eventOutcome = randEvent.weather();
+        	mainScreen.randEventPopup(eventOutcome);
         } else if (eventType ==2){
         	eventOutcome = randEvent.oxDead();
+        	mainScreen.randEventPopup(eventOutcome);
         } else if (eventType ==3){
         	eventOutcome = randEvent.foundItem();
+        	mainScreen.randEventPopup(eventOutcome);
+        } else if (eventType ==4){
         }
         
         if (currentFood > 0)
