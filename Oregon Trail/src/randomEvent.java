@@ -46,13 +46,33 @@ public class randomEvent {
 
 	public String oxDead(){
 		Oxen ox = new Oxen();
-		wagon.getWagonLoad().remove(ox);
+		wagon.getWagonLoad().items.get(4).decrement();
 		return "A snake has bitten one of your oxen and killed it.";
 	}
-	/* doing now!
+	
 	public String foundItem(){
-		int itemType = random.nextInt(5);
-		if ()
+		int itemType = random.nextInt(3);
+		if (itemType == 0){
+			int presQuant = wagon.getWagonLoad().items.get(4).quantity; 
+			wagon.getWagonLoad().items.get(4).setQuantity(presQuant+1);
+			return "You have just found an ox in the middle of nowhere!";
+		} else if (itemType ==1){
+			int numFound = random.nextInt(50);
+			Bullets bullets = new Bullets(numFound);
+			wagon.getWagonLoad().add(bullets);
+			return "You have just found " + numFound + " bullets!";
+		} else if (itemType ==2){
+			int numFound = random.nextInt(10);
+			Clothes clothes = new Clothes(numFound);
+			wagon.getWagonLoad().add(clothes);
+			return "You have found a tribe who has just been attacked by wolves.  You take their clothes and gain " + numFound + " pairs of clothing.";
+		} else if (itemType ==3){
+			int numFound = random.nextInt(100);
+			Food food = new Food(numFound);
+			wagon.getWagonLoad().add(food);
+			return "You have stumbled upon " + numFound + " pounds of berries!";
+		} else {
+			return "You have found an ox, but it ran away before you could control it.";
+		}
 	}
-	*/
 }
