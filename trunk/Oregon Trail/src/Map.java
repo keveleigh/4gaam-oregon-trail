@@ -21,6 +21,9 @@ public class Map {
 	/** The on the trail. */
 	public static Location onTheTrail = new Location("On the trail", 0);
 	
+	/** String of the event outcome. */
+	public static String eventOutcome;
+	
 	/** The wagon. */
 	Wagon wagon;
 	
@@ -70,6 +73,19 @@ public class Map {
         if (lastTown != Map.na && !lastTown.equals(lastTown2)) {
         	// The two towns aren't the same, so you advanced a town
         	distanceMoved = getLastLoc().getDistance();
+        }
+        
+        //Random events
+        randomEvent randEvent = new randomEvent();
+        int eventType = randEvent.generateEvent();
+        if (eventType ==0){
+        	eventOutcome = randEvent.getSick();
+        } else if (eventType ==1){
+        	eventOutcome = randEvent.weather();
+        } else if (eventType ==2){
+        	eventOutcome = randEvent.oxDead();
+        } else if (eventType ==3){
+        	eventOutcome = randEvent.foundItem();
         }
         
         if (currentFood > 0)
