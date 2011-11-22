@@ -12,10 +12,10 @@ public enum Pace {
     Leisurely(20),
     /** The Steady Pace */
     //goes 27 miles per turn
-    Steady(25),
+    Steady(27),
     /** The Grueling Pace */
     //goes 32 miles per turn
-    Grueling(30);
+    Grueling(32);
     
     private int pace;
 

@@ -101,4 +101,8 @@ public class Inventory {
         Item currentItem = items.get(i);
         return currentItem.quantity;
     }
+    
+    public ArrayList<Item> getItems(){
+        return items;
+    }
 }

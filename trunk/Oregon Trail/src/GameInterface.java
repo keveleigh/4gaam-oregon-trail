@@ -19,6 +19,7 @@ public class GameInterface extends JFrame {
     /** The wagon. */
     private Wagon wagon;
     
+    /** The map. */
     private Map map;
 
     /**
@@ -26,7 +27,7 @@ public class GameInterface extends JFrame {
      */
     public GameInterface() {
         display = new configScreen(this);
-        display.setSize(510, 411);
+        display.setSize(565, 407);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, display.getWidth() + 40, display.getHeight() + 20);
