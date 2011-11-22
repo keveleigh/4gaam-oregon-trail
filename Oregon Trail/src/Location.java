@@ -16,6 +16,7 @@ public class Location {
 	/** If this location is special it's stored here */
 	String special;
 	
+        /** The shop of the location if it has one*/
 	Shop myShop;
 	
 	/**
