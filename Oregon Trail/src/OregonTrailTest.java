@@ -42,17 +42,19 @@ public class OregonTrailTest {
 	}
 	
 	@Test
-	public void buyTest(){
+	public void buyTest() {
 		ArrayList<Member> members = new ArrayList<Member>();
 		members.add(new Member("Stefan"));
 		members.add(new Member("Daryl"));
-		members.add(new Member("Thomas"));//Stefan, fix
+		members.add(new Member("Thomas")); //Stefan, fix
 		members.add(new Member("Jesten"));
 		Leader leader = new Leader("Kurtis",Profession.Banker);
 		Wagon wagon = new Wagon(leader, members);
 		Map map = new Map(wagon);
 		Shop shop = new Shop();
-		Axle axle = new Axle();
+		shop.enter(wagon);
+		Oxen oxen = new Oxen(3);
+		Axle axle = new Axle(5);
 		//inventory- 0 = axle 1 = bullets 2 = clothes 3 = food 4 = oxen 5 = tongue 6 = wheels
 		assertEquals(0, wagon.getWagonLoad().getQuantity(0));
 		assertEquals(0, wagon.getWagonLoad().getQuantity(1));
@@ -62,8 +64,9 @@ public class OregonTrailTest {
 		assertEquals(0, wagon.getWagonLoad().getQuantity(5));
 		assertEquals(0, wagon.getWagonLoad().getQuantity(6));
 		leader.setMoney(1234567);
+		shop.buy(oxen);
+		assertEquals(3, wagon.getWagonLoad().getQuantity(4));
 		shop.buy(axle);
-		assertEquals(1, wagon.getWagonLoad().getQuantity(0));
-		
+		assertEquals(5, wagon.getWagonLoad().getQuantity(0));
 	}
 }
