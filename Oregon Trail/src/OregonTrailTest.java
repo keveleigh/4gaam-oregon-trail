@@ -69,4 +69,32 @@ public class OregonTrailTest {
 		shop.buy(axle);
 		assertEquals(5, wagon.getWagonLoad().getQuantity(0));
 	}
+	
+	/**
+	 * This is to test the weather random events generator in the randomEvent class.  Created by Daryl Halima
+	 */
+	@Test
+	public void testWeather(){
+		ArrayList<Member> members = new ArrayList<Member>();
+		members.add(new Member("Stefan"));
+		members.add(new Member("Daryl"));
+		members.add(new Member("Thomas"));
+		members.add(new Member("Jesten"));
+		Leader leader = new Leader("Kurtis",Profession.Banker);
+		Wagon wagon = new Wagon(leader, members);
+		Map map = new Map(wagon);
+		randomEvent event = new randomEvent();
+		String out = "";
+		int random = rand.nextInt(3);
+		if (random ==0){
+			out = "You have made it through the thunderstorm.  Hopefully all your members are still alive.";;
+		} else if (random ==1){
+			out = "You and your members have gotten stuck in a sandstorm and lose 5 days";
+		} else if (random ==2){
+			out = "You and your members have been struck by hail.";
+		} else {
+			out = "You have made it past a terrible storm but made it through safely.";
+		}
+		assertEquals(event.weather(), out);
+	}
 }
