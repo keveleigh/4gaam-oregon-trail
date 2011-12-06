@@ -46,15 +46,18 @@ public class randomEvent {
 		}
 	}
 	
-	public String weather(){
-		int weather = random.nextInt(2);
+	public String weather() {
 		/*
-		 * 0 is thunderstorm, 1 is a sandstorm, 2 is hail
+		 * 0 is thunderstorm, 1 is a sandstorm, 2 is hail, 3 is safe
 		 */
+		return weather(random.nextInt(4));
+	}
+	
+	public String weather(int weather){
 		if (weather ==0){
 			getSick();
 			return "You have made it through the thunderstorm.  Hopefully all your members are still alive.";
-		} else if (weather ==1){
+		} else if (weather ==1) {
 			//TODO implement when time is ready
 			return "You and your members have gotten stuck in a sandstorm and lose 5 days";
 		} else if (weather ==2){

@@ -25,7 +25,7 @@ public class OregonTrailTest {
 		members.add(new Member("Daryl"));
 		members.add(new Member("Thomas"));
 		members.add(new Member("Jesten"));
-		Leader leader = new Leader("Kurtis",Profession.Banker);
+		Leader leader = new Leader("Kurtis", Profession.Banker);
 		Wagon wagon = new Wagon(leader, members);
 		Map map = new Map(wagon);
 		String out = "";
@@ -85,16 +85,16 @@ public class OregonTrailTest {
 		Map map = new Map(wagon);
 		randomEvent event = new randomEvent();
 		String out = "";
-		int random = rand.nextInt(3);
-		if (random ==0){
+		int random = rand.nextInt(4);
+		if (random == 0) {
 			out = "You have made it through the thunderstorm.  Hopefully all your members are still alive.";;
-		} else if (random ==1){
+		} else if (random == 1){
 			out = "You and your members have gotten stuck in a sandstorm and lose 5 days";
-		} else if (random ==2){
+		} else if (random == 2){
 			out = "You and your members have been struck by hail.";
 		} else {
 			out = "You have made it past a terrible storm but made it through safely.";
 		}
-		assertEquals(event.weather(), out);
+		assertEquals(event.weather(random), out);
 	}
 }
