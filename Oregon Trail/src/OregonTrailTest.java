@@ -7,16 +7,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Oregon Trail JUnit tests
- * @author Daryl, Stefan
+ * Oregon Trail JUnit tests.
  *
+ * @author Daryl, Stefan, Jesten, Kurtis, Tom
  */
 public class OregonTrailTest {
+	
+	/** The random generator. */
 	Random rand = new Random(9);
 
 
 	/**
-	 * This JUnit test tests the getSick method in the randomEvent class
+	 * Test getting sick.
+	 * @author Tom
 	 */
 	@Test
 	public void testGetSick(){
@@ -28,25 +31,37 @@ public class OregonTrailTest {
 		Leader leader = new Leader("Kurtis", Profession.Banker);
 		Wagon wagon = new Wagon(leader, members);
 		Map map = new Map(wagon);
+		
 		String out = "";
-		int randPerson = rand.nextInt(3);
-		int randSickness = rand.nextInt(2);
-		if (randPerson ==0 && randSickness ==0){
-			out = "Stefan has a broken arm";
-		} else if (randPerson ==1 && randSickness ==0){
-			out = "Daryl has a broken arm";
-		} else if (randPerson ==2 && randSickness ==0){
-			out = "Thomas has a broken arm";
-		} else if (randPerson ==3 && randSickness ==0){
-		}
+		
+		randomEvent event = new randomEvent();
+		
+		// Test Stefan getting a broken arm
+		assertEquals(event.getSick(0, 0), "Stefan has a broken arm.");
+		
+		// Test Daryl getting diarrhea
+		assertEquals(event.getSick(2, 1), "Daryl has a case of severe diarrhea.");
+		
+		// Test Thomas getting flu
+		assertEquals(event.getSick(1, 2), "Thomas has contracted the flu.");
+		
+		// Test Jesten getting a broken arm
+		assertEquals(event.getSick(0, 3), "Jesten has a broken arm.");
+		
+		// Test everyone getting through safely
+		assertEquals(event.getSick(4, 0), "Your members have just survived a terrible storm.  Nobody got sick.");
 	}
 	
+	/**
+	 * Test buying items.
+	 * @author Kurtis
+	 */
 	@Test
 	public void testBuy() {
 		ArrayList<Member> members = new ArrayList<Member>();
 		members.add(new Member("Stefan"));
 		members.add(new Member("Daryl"));
-		members.add(new Member("Thomas")); //Stefan, fix
+		members.add(new Member("Thomas"));
 		members.add(new Member("Jesten"));
 		Leader leader = new Leader("Kurtis",Profession.Banker);
 		Wagon wagon = new Wagon(leader, members);
@@ -71,7 +86,8 @@ public class OregonTrailTest {
 	}
 	
 	/**
-	 * This is to test the weather random events generator in the randomEvent class.  Created by Daryl Halima
+	 * Test weather events.
+	 * @author Daryl
 	 */
 	@Test
 	public void testWeather(){
@@ -98,6 +114,10 @@ public class OregonTrailTest {
 		assertEquals(event.weather(random), out);
 	}
 	
+	/**
+	 * Test health effects.
+	 * @author Stefan
+	 */
 	@Test
 	public void testHealth() {
 		ArrayList<Member> members = new ArrayList<Member>();
@@ -166,6 +186,10 @@ public class OregonTrailTest {
 		assertEquals(members.get(3).getMyHealth().getHealth(), 100);
 	}
 	
+	/**
+	 * Test traveling and locations.
+	 * @author Jesten
+	 */
 	@Test
 	public void testTraveling() {
 		ArrayList<Member> members = new ArrayList<Member>();
