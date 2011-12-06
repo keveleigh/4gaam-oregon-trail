@@ -42,7 +42,7 @@ public class OregonTrailTest {
 	}
 	
 	@Test
-	public void buyTest() {
+	public void testBuy() {
 		ArrayList<Member> members = new ArrayList<Member>();
 		members.add(new Member("Stefan"));
 		members.add(new Member("Daryl"));
@@ -164,5 +164,63 @@ public class OregonTrailTest {
 		assertEquals(members.get(1).getMyHealth().getHealth(), 100);
 		assertEquals(members.get(2).getMyHealth().getHealth(), 100);
 		assertEquals(members.get(3).getMyHealth().getHealth(), 100);
+	}
+	
+	@Test
+	public void testTraveling() {
+		ArrayList<Member> members = new ArrayList<Member>();
+		members.add(new Member("Stefan"));
+		members.add(new Member("Daryl"));
+		members.add(new Member("Thomas"));
+		members.add(new Member("Jesten"));
+		Leader leader = new Leader("Kurtis",Profession.Banker);
+		Wagon wagon = new Wagon(leader, members);
+		Map map = new Map(wagon);
+		
+		// Set the pace to grueling
+		wagon.setCurrPace(Pace.Grueling);
+		assertEquals(wagon.getCurrPace(), Pace.Grueling);
+		
+		// Check if we start at Independence
+		assertEquals(map.getCurrLocation().getName(), "Independence, MO");
+		assertEquals(map.getCurrLocation().isRiver(), false);
+		assertEquals(map.getCurrLocation().isLast(), false);
+		// Check last location
+		assertEquals(map.getLastLoc().getName(), "N/A");
+		
+		// Distance moved should be 0
+		assertEquals(map.getDistanceMoved(), 0);
+		
+		// Take a turn without random events
+		map.takeTurn(wagon, false);
+		
+		// Distance moved should be equal to the pace
+		assertEquals(map.getDistanceMoved(), wagon.getCurrPace().getPace());
+		
+		// Take a few more turns
+		map.takeTurn(wagon, false);
+		
+		assertEquals(map.getCurrLocation().getName(), "On the trail");
+		
+		map.takeTurn(wagon, false);
+		map.takeTurn(wagon, false);
+		
+		// Should have arrived at Kansas River Crossing
+		assertEquals(map.getCurrLocation().getName(), "Kansas River Crossing");
+		assertEquals(map.getCurrLocation().isRiver(), true);
+		assertEquals(map.getCurrLocation().isLast(), false);
+		assertEquals(map.getDistanceMoved(), 100);
+		
+		// Go to last location
+		
+		for (int i = 0; i < 68; i++) {
+			map.takeTurn(wagon, false);
+		}
+		
+		assertEquals(map.getCurrLocation().getName(), "Oregon");
+		assertEquals(map.getCurrLocation().isRiver(), false);
+		assertEquals(map.getCurrLocation().isLast(), true);
+		
+		assertEquals(map.getDistanceMoved(), 2100);
 	}
 }
