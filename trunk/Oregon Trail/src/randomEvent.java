@@ -27,7 +27,7 @@ public class randomEvent {
 	}
 
 	public String getSick(){
-		int sicknessType = random.nextInt(2);
+		int sicknessType = random.nextInt(4);
 		int person = random.nextInt(3);
 		/*
 		 * 0 is a broken arm, 1 is a case of the flu, 2 is severe diarrhea
@@ -77,7 +77,7 @@ public class randomEvent {
 	}
 	
 	public String foundItem(){
-		int itemType = random.nextInt(3);
+		int itemType = random.nextInt(5);
 		if (itemType == 0){
 			int presQuant = Wagon.getWagonLoad().items.get(4).quantity; 
 			Wagon.getWagonLoad().items.get(4).setQuantity(presQuant+1);
