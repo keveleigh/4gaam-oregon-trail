@@ -56,8 +56,13 @@ public class Map {
         locations[16] = new Location("Barlow Toll Road", 1960);
         locations[17] = new Location("Oregon", 2100, null, "last");
     }
-
+    
     public void takeTurn(Wagon wagon) {
+    	// Do takeTurn with Random events
+    	takeTurn(wagon, true);
+    }
+
+    public void takeTurn(Wagon wagon, boolean doRandom) {
         Inventory wagonLoad = wagon.getWagonLoad();
         int currentFood = wagonLoad.getQuantity(3);
         Location lastTown = getLastLoc();
@@ -71,21 +76,23 @@ public class Map {
         }
 
         //Random events
-        randomEvent randEvent = new randomEvent();
-        int eventType = randEvent.generateEvent();
-        if (eventType == 0) {
-            eventOutcome = randEvent.getSick();
-            mainScreen.randEventPopup(eventOutcome);
-        } else if (eventType == 1) {
-            eventOutcome = randEvent.weather();
-            mainScreen.randEventPopup(eventOutcome);
-        } else if (eventType == 2) {
-            eventOutcome = randEvent.oxDead();
-            mainScreen.randEventPopup(eventOutcome);
-        } else if (eventType == 3) {
-            eventOutcome = randEvent.foundItem();
-            mainScreen.randEventPopup(eventOutcome);
-        } else if (eventType == 4) {
+        if (doRandom) {
+	        randomEvent randEvent = new randomEvent();
+	        int eventType = randEvent.generateEvent();
+	        if (eventType == 0) {
+	            eventOutcome = randEvent.getSick();
+	            mainScreen.randEventPopup(eventOutcome);
+	        } else if (eventType == 1) {
+	            eventOutcome = randEvent.weather();
+	            mainScreen.randEventPopup(eventOutcome);
+	        } else if (eventType == 2) {
+	            eventOutcome = randEvent.oxDead();
+	            mainScreen.randEventPopup(eventOutcome);
+	        } else if (eventType == 3) {
+	            eventOutcome = randEvent.foundItem();
+	            mainScreen.randEventPopup(eventOutcome);
+	        } else if (eventType == 4) {
+	        }
         }
 
         if (currentFood > 0) {
