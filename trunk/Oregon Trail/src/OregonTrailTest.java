@@ -97,4 +97,72 @@ public class OregonTrailTest {
 		}
 		assertEquals(event.weather(random), out);
 	}
+	
+	@Test
+	public void testHealth() {
+		ArrayList<Member> members = new ArrayList<Member>();
+		members.add(new Member("Stefan"));
+		members.add(new Member("Daryl"));
+		members.add(new Member("Thomas"));
+		members.add(new Member("Jesten"));
+		Leader leader = new Leader("Kurtis",Profession.Banker);
+		Wagon wagon = new Wagon(leader, members);
+		Map map = new Map(wagon);
+		
+		assertEquals(members.get(0).getMyHealth().getHealth(), 100);
+		assertEquals(members.get(1).getMyHealth().getHealth(), 100);
+		assertEquals(members.get(2).getMyHealth().getHealth(), 100);
+		assertEquals(members.get(3).getMyHealth().getHealth(), 100);
+		
+		randomEvent event = new randomEvent();
+		
+		// Flu to person at index 1
+		event.getSick(1, 1);
+		
+		assertEquals(members.get(0).getMyHealth().getHealth(), 100);
+		assertEquals(members.get(1).getMyHealth().getHealth(), 85);
+		assertEquals(members.get(2).getMyHealth().getHealth(), 100);
+		assertEquals(members.get(3).getMyHealth().getHealth(), 100);
+		
+		// Diarrhea to person at index 3
+		event.getSick(2, 3);
+		
+		assertEquals(members.get(0).getMyHealth().getHealth(), 100);
+		assertEquals(members.get(1).getMyHealth().getHealth(), 85);
+		assertEquals(members.get(2).getMyHealth().getHealth(), 100);
+		assertEquals(members.get(3).getMyHealth().getHealth(), 70);
+		
+		// Flu to person at index 0
+		event.getSick(0, 0);
+		
+		assertEquals(members.get(0).getMyHealth().getHealth(), 55);
+		assertEquals(members.get(1).getMyHealth().getHealth(), 85);
+		assertEquals(members.get(2).getMyHealth().getHealth(), 100);
+		assertEquals(members.get(3).getMyHealth().getHealth(), 70);
+		
+		// Kill person 2
+		members.get(2).getMyHealth().decrease(200);
+		
+		// Check if alive
+		assertEquals(members.get(0).getMyHealth().isAlive(), true);
+		assertEquals(members.get(1).getMyHealth().isAlive(), true);
+		assertEquals(members.get(2).getMyHealth().isAlive(), false);
+		assertEquals(members.get(3).getMyHealth().isAlive(), true);
+		
+		assertEquals(members.get(0).getMyHealth().getHealth(), 55);
+		assertEquals(members.get(1).getMyHealth().getHealth(), 85);
+		assertEquals(members.get(2).getMyHealth().getHealth(), 0);
+		assertEquals(members.get(3).getMyHealth().getHealth(), 70);
+		
+		// Set everyone's health back to 100 (revive person 2 as well)
+		members.get(0).getMyHealth().increase(100);
+		members.get(1).getMyHealth().increase(100);
+		members.get(2).getMyHealth().increase(100);
+		members.get(3).getMyHealth().increase(100);
+		
+		assertEquals(members.get(0).getMyHealth().getHealth(), 100);
+		assertEquals(members.get(1).getMyHealth().getHealth(), 100);
+		assertEquals(members.get(2).getMyHealth().getHealth(), 100);
+		assertEquals(members.get(3).getMyHealth().getHealth(), 100);
+	}
 }
