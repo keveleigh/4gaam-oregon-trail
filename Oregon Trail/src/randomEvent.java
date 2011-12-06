@@ -25,13 +25,15 @@ public class randomEvent {
 			return 4;
 		}
 	}
-
-	public String getSick(){
-		int sicknessType = random.nextInt(4);
-		int person = random.nextInt(3);
+	
+	public String getSick() {
 		/*
 		 * 0 is a broken arm, 1 is a case of the flu, 2 is severe diarrhea
 		 */
+		return getSick(random.nextInt(4), random.nextInt(4));
+	}
+
+	public String getSick(int sicknessType, int person){
 		if (sicknessType == 0){
 			Wagon.getMembers().get(person).getMyHealth().decrease(45);
 			return Wagon.getMembers().get(person).getName() + " has a broken arm.";
