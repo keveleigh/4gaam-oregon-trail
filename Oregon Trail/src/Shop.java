@@ -24,7 +24,6 @@ public class Shop
 	 * Buy.
 	 *
 	 * @param i the item
-	 * @param quant the quantity
 	 * @return true, if successful
 	 */
 	public String buy(Item i)
@@ -58,7 +57,6 @@ public class Shop
 	 * Check money.
 	 *
 	 * @param i the item
-	 * @param quant the quantity
 	 * @return true, if successful
 	 */
 	public boolean checkMoney(Item i)
@@ -96,7 +94,7 @@ public class Shop
 	/**
 	 * Updates the shop with the player's current game state.
 	 *
-	 * @param Wagon w The current wagon
+	 * @param w The current wagon
 	 */
 	public void enter(Wagon w)
 	{

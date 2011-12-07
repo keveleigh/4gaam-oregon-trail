@@ -25,7 +25,7 @@ public class Map {
     /**
      * Instantiates a new map.
      *
-     * @param turnReference the turn reference
+     * @param wagon The current wagon.
      */
     public Map(Wagon wagon) {
         this.wagon = wagon;
