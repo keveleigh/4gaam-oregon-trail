@@ -94,7 +94,7 @@ public class Inventory {
      * 5 = tongue
      * 6 = wheels
      *
-     * @param int i The amount of the item stored.
+     * @param i The amount of the item stored.
      * @return The amount of the specified item currently in the inventory.
      */
     public int getQuantity(int i) {
