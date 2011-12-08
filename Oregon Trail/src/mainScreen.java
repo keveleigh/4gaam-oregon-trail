@@ -10,10 +10,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JLabel;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.GroupLayout;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 /*
  * To change this template, choose Tools | Templates
@@ -45,12 +41,13 @@ public class mainScreen extends javax.swing.JPanel {
     private Map mapClass;
     /** The wagon load. */
     private Inventory wagonLoad;
-    TurnListener listen;
+    private TurnListener listen;
 
     /** Creates new form mainScreen */
     public mainScreen(GameInterface face) {
         initComponents();
-        
+
+
         displayPanel.setBackground(Color.black);
         setBackground(Color.yellow);
         barebones.setBackground(Color.yellow);
@@ -59,7 +56,7 @@ public class mainScreen extends javax.swing.JPanel {
         leisurely.setBackground(Color.yellow);
         steady.setBackground(Color.yellow);
         grueling.setBackground(Color.yellow);
-        
+
         game = face;
         wagon = game.getWagon();
         leader = wagon.getLeader();
@@ -68,26 +65,26 @@ public class mainScreen extends javax.swing.JPanel {
         currRation = wagon.getCurrRations();
         mapClass = face.getMap();
         listen = new TurnListener();
-        
+
         takeTurn.addActionListener(listen);
         save.addActionListener(new SaveListener());
-        
+
         if (currRation == Rations.BareBones) {
-        	barebones.setSelected(true);
+            barebones.setSelected(true);
         } else if (currRation == Rations.Meager) {
-        	meager.setSelected(true);
+            meager.setSelected(true);
         } else if (currRation == Rations.Filling) {
-        	filling.setSelected(true);
+            filling.setSelected(true);
         }
-        
+
         if (currPace == Pace.Grueling) {
-        	grueling.setSelected(true);
+            grueling.setSelected(true);
         } else if (currPace == Pace.Leisurely) {
-        	leisurely.setSelected(true);
+            leisurely.setSelected(true);
         } else if (currPace == Pace.Steady) {
-        	steady.setSelected(true);
+            steady.setSelected(true);
         }
-        
+
         money.setText("$" + Integer.toString(leader.getMoney()));
         distanceToNext.setText(Integer.toString(mapClass.getDistanceToNext()));
         distanceTraveled.setText(Integer.toString(mapClass.getDistanceMoved()));
@@ -132,6 +129,8 @@ public class mainScreen extends javax.swing.JPanel {
         distanceToNext = new javax.swing.JLabel();
         displayPanel = new javax.swing.JPanel();
         huntButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        currentDate = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(697, 410));
 
@@ -185,14 +184,14 @@ public class mainScreen extends javax.swing.JPanel {
 
         distanceToNext.setText("0");
 
-        javax.swing.GroupLayout gl_displayPanel = new javax.swing.GroupLayout(displayPanel);
-        displayPanel.setLayout(gl_displayPanel);
-        gl_displayPanel.setHorizontalGroup(
-            gl_displayPanel.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout displayPanelLayout = new javax.swing.GroupLayout(displayPanel);
+        displayPanel.setLayout(displayPanelLayout);
+        displayPanelLayout.setHorizontalGroup(
+            displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 434, Short.MAX_VALUE)
         );
-        gl_displayPanel.setVerticalGroup(
-            gl_displayPanel.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        displayPanelLayout.setVerticalGroup(
+            displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 265, Short.MAX_VALUE)
         );
 
@@ -202,156 +201,151 @@ public class mainScreen extends javax.swing.JPanel {
                 huntButtonActionPerformed(evt);
             }
         });
-        
-        JLabel lblCurrentDate = new JLabel();
-        lblCurrentDate.setText("Current Date:");
-        
-        currentDate = new JLabel();
-        currentDate.setText("N/A");
+
+        jLabel1.setText("Current Date:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
-        	layout.createParallelGroup(Alignment.TRAILING)
-        		.addGroup(layout.createSequentialGroup()
-        			.addContainerGap()
-        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(layout.createSequentialGroup()
-        					.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
-        						.addComponent(lblCurrentLocation, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        						.addGroup(layout.createSequentialGroup()
-        							.addGap(10)
-        							.addComponent(currLocation, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        						.addComponent(lblLastLocation)
-        						.addGroup(layout.createSequentialGroup()
-        							.addGap(10)
-        							.addComponent(lastLocation, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        						.addGroup(layout.createSequentialGroup()
-        							.addGap(10)
-        							.addComponent(currentDate, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE))
-        						.addComponent(lblCurrentDate, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        					.addGap(30)
-        					.addComponent(displayPanel, GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE))
-        				.addGroup(layout.createSequentialGroup()
-        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        						.addGroup(layout.createSequentialGroup()
-        							.addComponent(moneyText)
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addComponent(money, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
-        						.addGroup(layout.createSequentialGroup()
-        							.addComponent(foodText)
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addComponent(currentFood, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)))
-        					.addGap(19))
-        				.addGroup(layout.createSequentialGroup()
-        					.addComponent(lblDistanceToNext)
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addComponent(distanceToNext, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
-        				.addGroup(layout.createSequentialGroup()
-        					.addComponent(distanceText)
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addComponent(distanceTraveled, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)))
-        			.addGap(18)
-        			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-        				.addGroup(layout.createSequentialGroup()
-        					.addComponent(takeTurn, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-        					.addContainerGap())
-        				.addGroup(layout.createSequentialGroup()
-        					.addComponent(save, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-        					.addContainerGap())
-        				.addGroup(layout.createSequentialGroup()
-        					.addComponent(huntButton, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-        					.addContainerGap())
-        				.addGroup(layout.createSequentialGroup()
-        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        						.addComponent(grueling)
-        						.addComponent(steady)
-        						.addComponent(leisurely)
-        						.addComponent(paceText)
-        						.addComponent(rationText)
-        						.addComponent(filling)
-        						.addComponent(meager)
-        						.addComponent(barebones))
-        					.addGap(24))))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblCurrentLocation)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addComponent(currLocation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(lblLastLocation)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addComponent(lastLocation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(currentDate)))
+                        .addGap(30, 30, 30)
+                        .addComponent(displayPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(moneyText)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(money, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(foodText)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(currentFood, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(19, 19, 19))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblDistanceToNext)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(distanceToNext, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(distanceText)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(distanceTraveled, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(grueling)
+                    .addComponent(steady)
+                    .addComponent(leisurely)
+                    .addComponent(paceText)
+                    .addComponent(rationText)
+                    .addComponent(filling)
+                    .addComponent(meager)
+                    .addComponent(barebones)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(huntButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(save, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(takeTurn, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
-        	layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(layout.createSequentialGroup()
-        			.addContainerGap()
-        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addComponent(displayPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        				.addGroup(layout.createSequentialGroup()
-        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(rationText)
-        						.addComponent(lblCurrentLocation))
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        						.addGroup(layout.createSequentialGroup()
-        							.addComponent(currLocation)
-        							.addPreferredGap(ComponentPlacement.UNRELATED)
-        							.addComponent(lblLastLocation)
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addComponent(lastLocation)
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addComponent(lblCurrentDate))
-        						.addGroup(layout.createSequentialGroup()
-        							.addComponent(barebones)
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addComponent(meager)
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addComponent(filling)))
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addGroup(layout.createParallelGroup(Alignment.TRAILING, false)
-        						.addGroup(layout.createSequentialGroup()
-        							.addGap(7)
-        							.addComponent(paceText)
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addComponent(leisurely)
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addComponent(steady)
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addComponent(grueling)
-        							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        							.addComponent(huntButton)
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addComponent(save)
-        							.addPreferredGap(ComponentPlacement.UNRELATED)
-        							.addComponent(takeTurn)
-        							.addGap(12))
-        						.addGroup(layout.createSequentialGroup()
-        							.addGap(6)
-        							.addComponent(currentDate)
-        							.addGap(171)
-        							.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-        								.addComponent(distanceToNext)
-        								.addComponent(lblDistanceToNext))
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        								.addComponent(distanceTraveled)
-        								.addComponent(distanceText))
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        								.addComponent(currentFood)
-        								.addComponent(foodText))
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        								.addComponent(moneyText)
-        								.addComponent(money))))))
-        			.addContainerGap())
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(displayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(huntButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(save)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(takeTurn))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(rationText)
+                                    .addComponent(lblCurrentLocation))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(currLocation)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lblLastLocation)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lastLocation)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(barebones)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(meager)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(filling)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(7, 7, 7)
+                                        .addComponent(paceText)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(leisurely)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(steady)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(grueling)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(currentDate)
+                                        .addGap(176, 176, 176)))
+                                .addGap(54, 54, 54))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblDistanceToNext)
+                                    .addComponent(distanceToNext))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(distanceText)
+                                    .addComponent(distanceTraveled))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(foodText)
+                                    .addComponent(currentFood))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(moneyText)
+                                    .addComponent(money))))
+                        .addGap(32, 32, 32)))
+                .addContainerGap())
         );
-        this.setLayout(layout);
     }// </editor-fold>//GEN-END:initComponents
 
     private void huntButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huntButtonActionPerformed
-            huntScreen screen = new huntScreen(game);
-            huntingOptions options = new huntingOptions(screen);
-            JPanel panel = options;
-            panel.setSize(new Dimension(700,795));
-            game.changeDisplay(panel);
+        huntScreen screen = new huntScreen(game);
+        huntingOptions options = new huntingOptions(screen);
+        JPanel panel = options;
+        panel.setSize(new Dimension(700, 795));
+        game.changeDisplay(panel);
     }//GEN-LAST:event_huntButtonActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton barebones;
     private javax.swing.JLabel currLocation;
+    private javax.swing.JLabel currentDate;
     private javax.swing.JLabel currentFood;
     private javax.swing.JPanel displayPanel;
     private javax.swing.JLabel distanceText;
@@ -361,6 +355,7 @@ public class mainScreen extends javax.swing.JPanel {
     private javax.swing.JLabel foodText;
     private javax.swing.JRadioButton grueling;
     private javax.swing.JButton huntButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lastLocation;
     private javax.swing.JLabel lblCurrentLocation;
     private javax.swing.JLabel lblDistanceToNext;
@@ -376,7 +371,6 @@ public class mainScreen extends javax.swing.JPanel {
     private javax.swing.JButton save;
     private javax.swing.JRadioButton steady;
     private javax.swing.JButton takeTurn;
-    private JLabel currentDate;
     // End of variables declaration//GEN-END:variables
 
     // This method returns the selected radio button in a button group
@@ -395,7 +389,7 @@ public class mainScreen extends javax.swing.JPanel {
         }
         return null;
     }
-    
+
     public static void randEventPopup(String eventOutcome) {
         JOptionPane.showMessageDialog(game, eventOutcome);
     }
@@ -427,7 +421,7 @@ public class mainScreen extends javax.swing.JPanel {
             } else {
                 wagon.setCurrPace(Pace.Grueling);
             }
-            
+
             p = getSelection(rations).getText();
             if (p.equals("Bare Bones")) {
                 wagon.setCurrRations(Rations.BareBones);
@@ -436,25 +430,25 @@ public class mainScreen extends javax.swing.JPanel {
             } else {
                 wagon.setCurrRations(Rations.Filling);
             }
-            
+
             money.setText("$" + Integer.toString(leader.getMoney()));
-            
+
             mapClass.takeTurn(wagon);
-            
+
             wagon = mapClass.getWagon();
-            
+
             wagon.nextDay();
             currentDate.setText(wagon.getDateString());
-            
+
             currLocation.setText(mapClass.getCurrLocation().getName());
             lastLocation.setText(mapClass.getLastLoc().getName());
             distanceToNext.setText(Integer.toString(mapClass.getDistanceToNext()));
             wagonLoad = wagon.getWagonLoad();
             currentFood.setText(Integer.toString(wagonLoad.getQuantity(3)));
             distanceTraveled.setText(Integer.toString(mapClass.getDistanceMoved()));
-            
+
             validate();
-            
+
             if (mapClass.getCurrLocation() != Map.na && mapClass.getCurrLocation().myShop != null) {
                 game.setWagon(wagon);
                 game.setMap(mapClass);
@@ -469,17 +463,16 @@ public class mainScreen extends javax.swing.JPanel {
                         null,
                         options,
                         options[0]);
-                
+
                 if (n == 0) {
                     JPanel panel = new generalStore(mapClass.getCurrLocation().myShop, game);
                     panel.setSize(new Dimension(450, 300));
                     game.changeDisplay(panel);
                 } else if (n == 1) {
-                	
                 }
                 //            	enterShop.setEnabled(true);
             }
-            
+
             if (mapClass.getCurrLocation().isRiver()) {
                 Object[] options = {"Caulk and Float",
                     "Take Ferry ($200)",
@@ -509,7 +502,7 @@ public class mainScreen extends javax.swing.JPanel {
                                 options[0]);
                     }
                 }
-                
+
                 if (n == 0) {
                     if (mapClass.getRiver().checkFloat()) {
                         JOptionPane.showMessageDialog(game, "Congratulations!  "
@@ -551,71 +544,71 @@ public class mainScreen extends javax.swing.JPanel {
                     }
                 }
             }
-            
+
             // Check for fork here
-        	if (mapClass.getCurrLocation().hasFork()) {
-        		Object[] options = {"Green River Crossing",
-                "Fort Bridger"};
-        		
-        		int n = JOptionPane.showOptionDialog(game,
-                        "There's a fork in the road; you may\n" +
-                        		"1. Proceed to the Green River Crossing (less distance)\n" +
-                        		"2. Go to Fort Bridger (farther, but you can buy supplies)",
+            if (mapClass.getCurrLocation().hasFork()) {
+                Object[] options = {"Green River Crossing",
+                    "Fort Bridger"};
+
+                int n = JOptionPane.showOptionDialog(game,
+                        "There's a fork in the road; you may\n"
+                        + "1. Proceed to the Green River Crossing (less distance)\n"
+                        + "2. Go to Fort Bridger (farther, but you can buy supplies)",
                         "Fork",
                         JOptionPane.YES_NO_OPTION,
                         JOptionPane.INFORMATION_MESSAGE,
                         null,
                         options,
                         options[0]);
-        		
-        		if (n == 0) {
-        			// Do nothing, everything's staying the same
-        		} else {
-        			// Change all new locations for the fork
-        			mapClass.takeFork();
-        		}
-        	}
-        	
-        	// Check for fork here
-        	if (mapClass.getCurrLocation().hasFork()) {
-        		Object[] options = {"Green River Crossing",
-                "Fort Bridger"};
-        		
-        		int n = JOptionPane.showOptionDialog(game,
-                        "There's a fork in the road; you may\n" +
-                        		"1. Proceed to the Green River Crossing (less distance)\n" +
-                        		"2. Go to Fort Bridger (farther, but you can buy supplies)",
+
+                if (n == 0) {
+                    // Do nothing, everything's staying the same
+                } else {
+                    // Change all new locations for the fork
+                    mapClass.takeFork();
+                }
+            }
+
+            // Check for fork here
+            if (mapClass.getCurrLocation().hasFork()) {
+                Object[] options = {"Green River Crossing",
+                    "Fort Bridger"};
+
+                int n = JOptionPane.showOptionDialog(game,
+                        "There's a fork in the road; you may\n"
+                        + "1. Proceed to the Green River Crossing (less distance)\n"
+                        + "2. Go to Fort Bridger (farther, but you can buy supplies)",
                         "Fork",
                         JOptionPane.YES_NO_OPTION,
                         JOptionPane.INFORMATION_MESSAGE,
                         null,
                         options,
                         options[0]);
-        		
-        		if (n == 0) {
-        			// Do nothing, everything's staying the same
-        		} else {
-        			// Change all new locations for the fork
-        			mapClass.takeFork();
-        		}
-        	}
-            
+
+                if (n == 0) {
+                    // Do nothing, everything's staying the same
+                } else {
+                    // Change all new locations for the fork
+                    mapClass.takeFork();
+                }
+            }
+
             if (mapClass.getCurrLocation().isLast() == true) {
                 JOptionPane.showMessageDialog(null, "You've reached Oregon!");
                 takeTurn.setEnabled(false);
             }
         }
     }
-    
+
     private class SaveListener implements ActionListener {
-        
+
         public void actionPerformed(ActionEvent e) {
             String fileName = JOptionPane.showInputDialog(game, "Enter the name of your save game:");
-            
+
             try {
                 FileWriter fstream = new FileWriter(fileName + ".txt");
                 BufferedWriter out = new BufferedWriter(fstream);
-                
+
                 out.write(getSelection(pace).getText());
                 out.newLine();
                 out.write(getSelection(rations).getText());
@@ -636,7 +629,7 @@ public class mainScreen extends javax.swing.JPanel {
                     out.write(Integer.toString(wagonLoad.getItems().get(i).getQuantity()));
                     out.newLine();
                 }
-                
+
                 out.close();
             } catch (Exception d) {
                 System.err.println("Error: " + d.getMessage());
@@ -646,7 +639,7 @@ public class mainScreen extends javax.swing.JPanel {
                     "Would you like to continue the game?",
                     "Continue or Exit",
                     JOptionPane.YES_NO_OPTION);
-            
+
             if (n == JOptionPane.NO_OPTION) {
                 System.exit(0);
             }
