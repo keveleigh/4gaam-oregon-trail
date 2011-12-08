@@ -15,7 +15,7 @@ public class Wagon {
     /** The current rations. */
     private Rations currRations;
     /**The wagon's Inventory. */
-    private static Inventory wagonLoad;
+    static Inventory wagonLoad;
     /**The party leader. */
     private Leader leader;
     /**List of party members */
