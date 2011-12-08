@@ -191,12 +191,12 @@ public class randomEvent {
 	}
 	
 	public String tribeEncounter(){
-		return tribeEncounter(random.nextInt(3), random.nextInt(4));
+		return tribeEncounter(random.nextInt(Wagon.getMembers().size()), random.nextInt(4));
 	}
 	public String tribeEncounter(int type, int person){
 		if (type ==0){
 			Wagon.getMembers().remove(person);
-			return "You have just met a tribe.  They turn out to be cannibals, and you lose " + Wagon.getMembers().get(person) + " to them."; 
+			return "You have just met a tribe.  They turn out to be cannibals, and you lose " + Wagon.getMembers().get(person).getName() + " to them."; 
 		} else if (type ==1){
 			Food food = new Food(100);
 			Wagon.getWagonLoad().add(food);
