@@ -26,7 +26,6 @@ public class huntingOptions extends JPanel
 	public huntingOptions(huntScreen input)
 	{
 		this.panel = input;
-		setPreferredSize(new Dimension(760, 790)); //Allows room for both the board and the buttons.
 		start.addActionListener(new TimerListener()); //Allows the step button to step the panel.
 		leave.addActionListener(new LeaveListener()); //Allows the leave button to leave the screen.
 		add(info);
@@ -47,6 +46,7 @@ public class huntingOptions extends JPanel
 			if (t == 0)
 			{
 				timer.stop();
+				leave.setEnabled(true);
 				panel.resetGrid();
 				turns.setText("You hunted " + panel.updateFood() + " pounds of food."); //Updates the turns display.
 			}
@@ -59,6 +59,8 @@ public class huntingOptions extends JPanel
 	{
 		public void actionPerformed(ActionEvent e)
 		{
+			start.setEnabled(false);
+			leave.setEnabled(false);
 			timer.start();
 		}
 	}
