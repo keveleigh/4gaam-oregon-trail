@@ -68,11 +68,27 @@ public class mainScreen extends javax.swing.JPanel {
         takeTurn.addActionListener(listen);
         save.addActionListener(new SaveListener());
         
-        meager.setSelected(true);
-        steady.setSelected(true);
+        if (currRation == Rations.BareBones) {
+        	barebones.setSelected(true);
+        } else if (currRation == Rations.Meager) {
+        	meager.setSelected(true);
+        } else if (currRation == Rations.Filling) {
+        	filling.setSelected(true);
+        }
+        
+        if (currPace == Pace.Grueling) {
+        	grueling.setSelected(true);
+        } else if (currPace == Pace.Leisurely) {
+        	leisurely.setSelected(true);
+        } else if (currPace == Pace.Steady) {
+        	steady.setSelected(true);
+        }
         
         money.setText("$" + Integer.toString(leader.getMoney()));
         distanceToNext.setText(Integer.toString(mapClass.getDistanceToNext()));
+        distanceTraveled.setText(Integer.toString(mapClass.getDistanceMoved()));
+        currLocation.setText(mapClass.getCurrLocation().getName());
+        lastLocation.setText(mapClass.getLastLoc().getName());
         currentFood.setText(Integer.toString(wagonLoad.getQuantity(3)));
         
     }
