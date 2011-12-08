@@ -427,6 +427,7 @@ public class mainScreen extends javax.swing.JPanel {
                     panel.setSize(new Dimension(450, 300));
                     game.changeDisplay(panel);
                 } else if (n == 1) {
+                	
                 }
                 //            	enterShop.setEnabled(true);
             }
@@ -502,6 +503,54 @@ public class mainScreen extends javax.swing.JPanel {
                     }
                 }
             }
+            
+            // Check for fork here
+        	if (mapClass.getCurrLocation().hasFork()) {
+        		Object[] options = {"Green River Crossing",
+                "Fort Bridger"};
+        		
+        		int n = JOptionPane.showOptionDialog(game,
+                        "There's a fork in the road; you may\n" +
+                        		"1. Proceed to the Green River Crossing (less distance)\n" +
+                        		"2. Go to Fort Bridger (farther, but you can buy supplies)",
+                        "Fork",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.INFORMATION_MESSAGE,
+                        null,
+                        options,
+                        options[0]);
+        		
+        		if (n == 0) {
+        			// Do nothing, everything's staying the same
+        		} else {
+        			// Change all new locations for the fork
+        			mapClass.takeFork();
+        		}
+        	}
+        	
+        	// Check for fork here
+        	if (mapClass.getCurrLocation().hasFork()) {
+        		Object[] options = {"Green River Crossing",
+                "Fort Bridger"};
+        		
+        		int n = JOptionPane.showOptionDialog(game,
+                        "There's a fork in the road; you may\n" +
+                        		"1. Proceed to the Green River Crossing (less distance)\n" +
+                        		"2. Go to Fort Bridger (farther, but you can buy supplies)",
+                        "Fork",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.INFORMATION_MESSAGE,
+                        null,
+                        options,
+                        options[0]);
+        		
+        		if (n == 0) {
+        			// Do nothing, everything's staying the same
+        		} else {
+        			// Change all new locations for the fork
+        			mapClass.takeFork();
+        		}
+        	}
             
             if (mapClass.getCurrLocation().isLast() == true) {
                 JOptionPane.showMessageDialog(null, "You've reached Oregon!");
