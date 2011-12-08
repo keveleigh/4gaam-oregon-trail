@@ -21,6 +21,8 @@ public class Map {
     public static String eventOutcome;
     /** The wagon. */
     Wagon wagon;
+    /** If we took the fork in the road at Fort Bridger */
+    public boolean tookFork;
 
     /**
      * Instantiates a new map.
@@ -55,6 +57,9 @@ public class Map {
         locations[15] = new Location("The Dalles", 1860);
         locations[16] = new Location("Barlow Toll Road", 1960);
         locations[17] = new Location("Oregon", 2100, null, "last");
+        
+        // Extra Location for the fork and Fort Bridger
+        locations[18] = new Location("Fort Bridger", 1080, new Shop(), "fork");
     }
     
     public void takeTurn(Wagon wagon) {
