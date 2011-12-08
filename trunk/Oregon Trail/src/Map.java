@@ -67,8 +67,9 @@ public class Map {
     }
     
     public void takeTurn(Wagon wagon) {
+    	randomEvent randEvent = new randomEvent();
     	// Do takeTurn with Random events
-    	takeTurn(wagon, true);
+    	takeTurn(wagon, randEvent.Event());
     }
 
     public void takeTurn(Wagon wagon, boolean doRandom) {
@@ -88,20 +89,34 @@ public class Map {
         if (doRandom) {
 	        randomEvent randEvent = new randomEvent();
 	        int eventType = randEvent.generateEvent();
-	        if (eventType == 0) {
-	            eventOutcome = randEvent.getSick();
-	            mainScreen.randEventPopup(eventOutcome);
-	        } else if (eventType == 1) {
-	            eventOutcome = randEvent.weather();
-	            mainScreen.randEventPopup(eventOutcome);
-	        } else if (eventType == 2) {
-	            eventOutcome = randEvent.oxDead();
-	            mainScreen.randEventPopup(eventOutcome);
-	        } else if (eventType == 3) {
-	            eventOutcome = randEvent.foundItem();
-	            mainScreen.randEventPopup(eventOutcome);
-	        } else if (eventType == 4) {
-	        }
+			if (eventType == 0) {
+				eventOutcome = randEvent.getSick();
+				mainScreen.randEventPopup(eventOutcome);
+			} else if (eventType == 1) {
+				eventOutcome = randEvent.getWell();
+				mainScreen.randEventPopup(eventOutcome);
+			} else if (eventType == 2) {
+				eventOutcome = randEvent.weather();
+				mainScreen.randEventPopup(eventOutcome);
+			} else if (eventType == 3) {
+				eventOutcome = randEvent.oxDead();
+				mainScreen.randEventPopup(eventOutcome);
+			} else if (eventType == 4) {
+				eventOutcome = randEvent.foundItem();
+				mainScreen.randEventPopup(eventOutcome);
+			} else if (eventType == 5) {
+				eventOutcome = randEvent.loseItem();
+				mainScreen.randEventPopup(eventOutcome);
+			} else if (eventType == 6) {
+				eventOutcome = randEvent.wagonDamage();
+				mainScreen.randEventPopup(eventOutcome);	
+			} else if (eventType == 7) {
+				eventOutcome = randEvent.oxStolen();
+				mainScreen.randEventPopup(eventOutcome);
+			} else if (eventType == 8) {
+				eventOutcome = randEvent.getEmotional();
+				mainScreen.randEventPopup(eventOutcome);
+			}
         }
 
         if (currentFood > 0) {
