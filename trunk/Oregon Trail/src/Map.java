@@ -59,7 +59,7 @@ public class Map {
         locations[17] = new Location("Oregon", 2100, null, "last");
         
         // Extra Location for the fork and Fort Bridger
-        locations[18] = new Location("Fort Bridger", 1080, new Shop(), "fork");
+        // locations[18] = new Location("Fort Bridger", 1080, new Shop(), "fork");
     }
     
     public void takeTurn(Wagon wagon) {
