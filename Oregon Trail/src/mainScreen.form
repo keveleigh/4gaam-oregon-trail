@@ -73,19 +73,18 @@
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="grueling" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="steady" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="leisurely" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="paceText" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="save" max="32767" attributes="1"/>
-                      <Component id="rationText" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="takeTurn" alignment="0" max="32767" attributes="1"/>
-                  </Group>
+                  <Component id="save" max="32767" attributes="1"/>
+                  <Component id="rationText" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="takeTurn" alignment="0" max="32767" attributes="1"/>
                   <Component id="filling" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="meager" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="barebones" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="huntButton" alignment="0" max="32767" attributes="1"/>
               </Group>
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
           </Group>
@@ -129,7 +128,9 @@
                               <Component id="steady" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="grueling" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="150" max="32767" attributes="0"/>
+                              <EmptySpace pref="121" max="32767" attributes="0"/>
+                              <Component id="huntButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="save" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="takeTurn" min="-2" max="-2" attributes="0"/>
@@ -308,5 +309,13 @@
         </DimensionLayout>
       </Layout>
     </Container>
+    <Component class="javax.swing.JButton" name="huntButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hunt"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="huntButtonActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>

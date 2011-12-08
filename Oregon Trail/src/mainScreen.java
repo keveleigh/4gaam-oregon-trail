@@ -111,6 +111,7 @@ public class mainScreen extends javax.swing.JPanel {
         lblDistanceToNext = new javax.swing.JLabel();
         distanceToNext = new javax.swing.JLabel();
         displayPanel = new javax.swing.JPanel();
+        huntButton = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(697, 410));
 
@@ -175,6 +176,13 @@ public class mainScreen extends javax.swing.JPanel {
             .addGap(0, 265, Short.MAX_VALUE)
         );
 
+        huntButton.setText("Hunt");
+        huntButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                huntButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -214,18 +222,18 @@ public class mainScreen extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(distanceTraveled, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(grueling)
                     .addComponent(steady)
                     .addComponent(leisurely)
                     .addComponent(paceText)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(save, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(rationText)
-                        .addComponent(takeTurn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(save, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rationText)
+                    .addComponent(takeTurn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(filling)
                     .addComponent(meager)
-                    .addComponent(barebones))
+                    .addComponent(barebones)
+                    .addComponent(huntButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
@@ -262,7 +270,9 @@ public class mainScreen extends javax.swing.JPanel {
                                 .addComponent(steady)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(grueling)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                                .addComponent(huntButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(save)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(takeTurn))
@@ -286,6 +296,15 @@ public class mainScreen extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void huntButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huntButtonActionPerformed
+            huntScreen screen = new huntScreen(game);
+            huntingOptions options = new huntingOptions(screen);
+            JPanel panel = screen;
+            panel.setSize(new Dimension(679, 410));
+            game.changeDisplay(panel);
+    }//GEN-LAST:event_huntButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton barebones;
     private javax.swing.JLabel currLocation;
@@ -297,6 +316,7 @@ public class mainScreen extends javax.swing.JPanel {
     private javax.swing.JRadioButton filling;
     private javax.swing.JLabel foodText;
     private javax.swing.JRadioButton grueling;
+    private javax.swing.JButton huntButton;
     private javax.swing.JLabel lastLocation;
     private javax.swing.JLabel lblCurrentLocation;
     private javax.swing.JLabel lblDistanceToNext;
