@@ -116,6 +116,12 @@ public class Map {
 			} else if (eventType == 8) {
 				eventOutcome = randEvent.getEmotional();
 				mainScreen.randEventPopup(eventOutcome);
+			} else if (eventType == 9) {
+				eventOutcome = randEvent.newMember();
+				mainScreen.randEventPopup(eventOutcome);
+			} else if (eventType == 10) {
+				eventOutcome = randEvent.tribeEncounter();
+				mainScreen.randEventPopup(eventOutcome);
 			}
         }
 
