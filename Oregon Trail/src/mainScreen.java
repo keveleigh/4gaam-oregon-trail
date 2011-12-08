@@ -300,8 +300,8 @@ public class mainScreen extends javax.swing.JPanel {
     private void huntButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huntButtonActionPerformed
             huntScreen screen = new huntScreen(game);
             huntingOptions options = new huntingOptions(screen);
-            JPanel panel = screen;
-            panel.setSize(new Dimension(679, 410));
+            JPanel panel = options;
+            panel.setSize(new Dimension(700,795));
             game.changeDisplay(panel);
     }//GEN-LAST:event_huntButtonActionPerformed
 
