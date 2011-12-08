@@ -7,7 +7,7 @@ public class randomEvent {
 	public randomEvent(){};
 
 	public boolean Event(){
-		double yesOrNo = random.nextInt(3);
+		double yesOrNo = random.nextInt(4);
 		if (yesOrNo ==1){
 			return true;
 		} else {
@@ -20,7 +20,7 @@ public class randomEvent {
 		 * 0 is getSick, 1 is weather, 2 is oxDead, 3 is foundItem, 4 nothing happens
 		 */
 		if (Event()){
-			return random.nextInt(3);
+			return random.nextInt(10);
 		} else {
 			return 4;
 		}
@@ -45,6 +45,20 @@ public class randomEvent {
 			return Wagon.getMembers().get(person).getName() + " has a case of severe diarrhea.";
 		} else {
 			return "Your members have just survived a terrible storm.  Nobody got sick.";
+		}
+	}
+	
+	public String getWell(){
+		return getWell(random.nextInt(3), random.nextInt(4));
+	}
+	
+	public String getWell(int wellType, int person){
+		if (wellType == 0){
+			Wagon.getMembers().get(person).getMyHealth().increase(100);
+			return "You have just come into contact with a Shaman.  He heals one of your group members.";
+		} else {
+			Wagon.getMembers().get(person).getMyHealth().increase(20);
+			return "You have just found a healing herb and give it to one of your group members.";
 		}
 	}
 	
@@ -101,6 +115,66 @@ public class randomEvent {
 			return "You have stumbled upon " + numFound + " pounds of berries!";
 		} else {
 			return "You have found an ox, but it ran away before you could control it.";
+		}
+	}
+	
+	public String loseItem(){
+		return loseItem(random.nextInt(5), random.nextInt(2));
+	}
+	
+	public String loseItem(int itemType, int loseType){ //needs work
+		Inventory inventory = Wagon.getWagonLoad();
+		if (loseType ==0){
+			inventory.items.get(itemType).decrement();
+			return "Your wagon has went through a huge ditch and you lost some" + inventory.getItems().get(itemType).name + ".";
+		} else {
+			inventory.items.get(itemType).decrement();
+			return "A thief has robbed " + inventory.getItems().get(itemType).name + " during your sleep.";
+		}
+	}
+	
+	public String wagonDamage(){
+		int part = random.nextInt(4);
+		if (part == 0){
+			Wagon.getWagonLoad().items.get(0).decrement();
+			return "Your wagon has just went through a massive pothole.  Unfortunately, your axle has broken."; 
+		} else if (part == 1){
+			Wagon.getWagonLoad().items.get(5).decrement();
+			return "Your wagon has just went through a massive pothole.  Unfortunately, your tounge has broken.";
+		} else if (part == 2){
+			Wagon.getWagonLoad().items.get(6).decrement();
+			return "Your wagon has just went through a massive pothole.  Unfortunately, you lose a wheel.";
+		} else {
+			return "You have just went through a massive pothole.  You are lucky that your wagon's still fine.";
+		}
+	}
+	
+	public String oxStolen(){
+		int chance = random.nextInt(8);
+		if (chance == 0){			
+			if (Wagon.getWagonLoad().getQuantity(4) == 0){
+				return "A mischevious bandit was about to rob your oxen but realized you don't have one.";
+			} else {
+				Wagon.getWagonLoad().items.get(4).decrement();
+				return "A mischevious bandit just stole one of your oxen.";
+			}
+		} else {
+			return "You wake up in the middle of the night to a bandit trying to steal your oxen and stop him.";
+		}
+	}
+	
+	public String getEmotional(){
+		int chance = random.nextInt(5);
+		if (chance ==0){
+			return "You start to wonder if this trip is actually worth all the hard work and effort.";
+		} else if (chance ==1){
+			return "You begin to daydream what Oregon is like.";
+		} else if (chance ==2){
+			return "You get scared of the thought that you might die at any second.";
+		} else if (chance ==3){
+			return "You start to cry over the fact that you're still not at Oregon.";
+		} else {
+			return "You are about to cry but tell yourself that you're not going to cry no matter what.";
 		}
 	}
 }
