@@ -13,16 +13,20 @@ public class Map {
     Location[] locations = new Location[18];
     /** The current location. */
     int distanceMoved;
-    /** The na. */
+    
+    /** The N/A location. */
     public static Location na = new Location("N/A", 0);
     /** The on the trail. */
     public static Location onTheTrail = new Location("On the trail", 0);
+    /** If we took the fork in the road at Fort Bridger */
+    public boolean tookFork;
+    /** The fork location */
+    public Location fork;
+    
     /** String of the event outcome. */
     public static String eventOutcome;
     /** The wagon. */
     Wagon wagon;
-    /** If we took the fork in the road at Fort Bridger */
-    public boolean tookFork;
 
     /**
      * Instantiates a new map.
@@ -46,7 +50,7 @@ public class Map {
         locations[4] = new Location("Chimney Rock", 590);
         locations[5] = new Location("Fort Laramie", 675, new Shop());
         locations[6] = new Location("Independence Rock", 865);
-        locations[7] = new Location("South Pass", 970);
+        locations[7] = new Location("South Pass", 970, null, "forked");
         locations[8] = new River("Green River", 1025, 2, 135);
         locations[9] = new Location("Soda Springs", 1170);
         locations[10] = new Location("Fort Hall", 1225, new Shop());
@@ -59,7 +63,7 @@ public class Map {
         locations[17] = new Location("Oregon", 2100, null, "last");
         
         // Extra Location for the fork and Fort Bridger
-        // locations[18] = new Location("Fort Bridger", 1080, new Shop(), "fork");
+        fork = new Location("Fort Bridger", 1090, new Shop());
     }
     
     public void takeTurn(Wagon wagon) {
@@ -165,6 +169,27 @@ public class Map {
 
         return toReturn;
     }
+    
+    private int getCurrLocationIndex() {
+        Location toReturn = onTheTrail;
+        
+        int i = locations.length - 1;
+        
+        while (i >= 0) {
+            if (distanceMoved == locations[i].getDistance()) {
+                toReturn = locations[i];
+                break;
+            }
+            
+            i--;
+        }
+        
+        if (toReturn != onTheTrail) {
+        	return i;
+        } else {
+        	return -1;
+        }
+    }
 
     /**
      * Gets the location.
@@ -195,6 +220,17 @@ public class Map {
      */
     public int getDistanceMoved() {
         return distanceMoved;
+    }
+    
+    /**
+     * Does everything neccessary for taking the fork.
+     */
+    
+    public void takeFork() {
+    	locations[getCurrLocationIndex()+1] = fork;
+    	for (int i = getCurrLocationIndex()+2; i < locations.length; i++) {
+    		locations[i].tookFork();
+    	}
     }
 
     /**

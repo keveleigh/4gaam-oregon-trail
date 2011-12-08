@@ -1,3 +1,4 @@
+// TODO: Auto-generated Javadoc
 /**
  * The location class.
  * This class represents the various locations in the game.
@@ -13,10 +14,10 @@ public class Location {
 	/** The distance. */
 	int distance; //distance from beginning
 	
-	/** If this location is special it's stored here */
+	/** If this location is special it's stored here. */
 	String special;
 	
-        /** The shop of the location if it has one*/
+        /** The shop of the location if it has one. */
 	Shop myShop;
 	
 	/**
@@ -50,6 +51,7 @@ public class Location {
 	 *
 	 * @param name The name of the location
 	 * @param distance The distance from the start
+	 * @param myShop the my shop
 	 * @param special Any special information about the location
 	 */
 	public Location(String name, int distance, Shop myShop, String special) {
@@ -77,10 +79,24 @@ public class Location {
 	}
 	
 	/**
+	 * Checks for fork.
+	 *
+	 * @return true, if successful
+	 */
+	public boolean hasFork() {
+		if (special.equals("forked")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
 	 * Checks if is last.
 	 *
 	 * @return true, if is last
 	 */
+	
 	public boolean isLast() {
 		if (special.equals("last")) {
 			return true;
@@ -89,12 +105,24 @@ public class Location {
 		}
 	}
 	
+	/**
+	 * Checks if is river.
+	 *
+	 * @return true, if is river
+	 */
 	public boolean isRiver() {
 		if (special.equals("river")) {
 			return true;
 		} else {
 			return false;
 		}
+	}
+	/**
+	 * Changes the distance if the fork was taken
+	 */
+	
+	public void tookFork() {
+		distance = distance + 100;
 	}
 	
 	/**
