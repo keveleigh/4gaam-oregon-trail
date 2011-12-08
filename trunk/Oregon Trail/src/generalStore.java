@@ -523,6 +523,7 @@ public class generalStore extends JPanel {
             JPanel panel = new mainScreen(game);
             panel.setSize(new Dimension(679, 410));
             game.changeDisplay(panel);
+            
         }
     }
 }
