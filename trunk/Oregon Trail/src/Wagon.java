@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * The Class Wagon, which controls the pace and the rations of the game.
@@ -20,7 +21,8 @@ public class Wagon {
     private Leader leader;
     /**List of party members */
     private static ArrayList<Member> members;
-
+    /** Current date */
+    private Date date;
 
     /**
      * Instantiates a new wagon.
@@ -59,6 +61,42 @@ public class Wagon {
      */
     public void setCurrRations(Rations currRations) {
         this.currRations = currRations;
+    }
+    
+    /**
+     * Gets the date
+     * @return date
+     */
+    
+    public Date getDate() {
+    	return date;
+    }
+    
+    /**
+     * Gets the date as a string
+     * @return Date as a string
+     */
+    
+    public String getDateString() {
+    	return Integer.toString(date.getMonth()) + "/" + Integer.toString(date.getDate()) + "/" + Integer.toString(date.getYear());
+    }
+    
+    /**
+     * Sets date
+     * @param date the date
+     */
+    
+    
+    public void setDate(Date date) {
+    	this.date = date;
+    }
+    
+    /**
+     * Advances a day
+     */
+    
+    public void nextDay() {
+    	date.setDate(date.getDate()+1);
     }
 
     /**
