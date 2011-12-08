@@ -10,6 +10,10 @@ import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JLabel;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 /*
  * To change this template, choose Tools | Templates
@@ -90,7 +94,7 @@ public class mainScreen extends javax.swing.JPanel {
         currLocation.setText(mapClass.getCurrLocation().getName());
         lastLocation.setText(mapClass.getLastLoc().getName());
         currentFood.setText(Integer.toString(wagonLoad.getQuantity(3)));
-        
+        currentDate.setText(wagon.getDateString());
     }
 
     /** This method is called from within the constructor to
@@ -181,14 +185,14 @@ public class mainScreen extends javax.swing.JPanel {
 
         distanceToNext.setText("0");
 
-        javax.swing.GroupLayout displayPanelLayout = new javax.swing.GroupLayout(displayPanel);
-        displayPanel.setLayout(displayPanelLayout);
-        displayPanelLayout.setHorizontalGroup(
-            displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout gl_displayPanel = new javax.swing.GroupLayout(displayPanel);
+        displayPanel.setLayout(gl_displayPanel);
+        gl_displayPanel.setHorizontalGroup(
+            gl_displayPanel.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 434, Short.MAX_VALUE)
         );
-        displayPanelLayout.setVerticalGroup(
-            displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        gl_displayPanel.setVerticalGroup(
+            gl_displayPanel.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 265, Short.MAX_VALUE)
         );
 
@@ -198,119 +202,143 @@ public class mainScreen extends javax.swing.JPanel {
                 huntButtonActionPerformed(evt);
             }
         });
+        
+        JLabel lblCurrentDate = new JLabel();
+        lblCurrentDate.setText("Current Date:");
+        
+        currentDate = new JLabel();
+        currentDate.setText("N/A");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblCurrentLocation)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(currLocation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(lblLastLocation)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(lastLocation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(30, 30, 30)
-                        .addComponent(displayPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(moneyText)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(money, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(foodText)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(currentFood, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(19, 19, 19))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblDistanceToNext)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(distanceToNext, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(distanceText)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(distanceTraveled, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(grueling)
-                    .addComponent(steady)
-                    .addComponent(leisurely)
-                    .addComponent(paceText)
-                    .addComponent(save, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(rationText)
-                    .addComponent(takeTurn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(filling)
-                    .addComponent(meager)
-                    .addComponent(barebones)
-                    .addComponent(huntButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(22, 22, 22))
+        	layout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(layout.createSequentialGroup()
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
+        						.addComponent(lblCurrentLocation, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        						.addGroup(layout.createSequentialGroup()
+        							.addGap(10)
+        							.addComponent(currLocation, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        						.addComponent(lblLastLocation)
+        						.addGroup(layout.createSequentialGroup()
+        							.addGap(10)
+        							.addComponent(lastLocation, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        						.addGroup(layout.createSequentialGroup()
+        							.addGap(10)
+        							.addComponent(currentDate, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE))
+        						.addComponent(lblCurrentDate, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        					.addGap(30)
+        					.addComponent(displayPanel, GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        						.addGroup(layout.createSequentialGroup()
+        							.addComponent(moneyText)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(money, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
+        						.addGroup(layout.createSequentialGroup()
+        							.addComponent(foodText)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(currentFood, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)))
+        					.addGap(19))
+        				.addGroup(layout.createSequentialGroup()
+        					.addComponent(lblDistanceToNext)
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(distanceToNext, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(layout.createSequentialGroup()
+        					.addComponent(distanceText)
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(distanceTraveled, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)))
+        			.addGap(18)
+        			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        				.addGroup(layout.createSequentialGroup()
+        					.addComponent(takeTurn, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+        					.addContainerGap())
+        				.addGroup(layout.createSequentialGroup()
+        					.addComponent(save, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+        					.addContainerGap())
+        				.addGroup(layout.createSequentialGroup()
+        					.addComponent(huntButton, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+        					.addContainerGap())
+        				.addGroup(layout.createSequentialGroup()
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        						.addComponent(grueling)
+        						.addComponent(steady)
+        						.addComponent(leisurely)
+        						.addComponent(paceText)
+        						.addComponent(rationText)
+        						.addComponent(filling)
+        						.addComponent(meager)
+        						.addComponent(barebones))
+        					.addGap(24))))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(displayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rationText)
-                            .addComponent(lblCurrentLocation))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(currLocation)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblLastLocation)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lastLocation))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(barebones)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(meager)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(filling)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(paceText)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(leisurely)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(steady)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(grueling)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
-                                .addComponent(huntButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(save)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(takeTurn))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblDistanceToNext)
-                                    .addComponent(distanceToNext))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(distanceText)
-                                    .addComponent(distanceTraveled))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(foodText)
-                                    .addComponent(currentFood))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(moneyText)
-                                    .addComponent(money))))))
-                .addContainerGap())
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(displayPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addGroup(layout.createSequentialGroup()
+        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        						.addComponent(rationText)
+        						.addComponent(lblCurrentLocation))
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        						.addGroup(layout.createSequentialGroup()
+        							.addComponent(currLocation)
+        							.addPreferredGap(ComponentPlacement.UNRELATED)
+        							.addComponent(lblLastLocation)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(lastLocation)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(lblCurrentDate))
+        						.addGroup(layout.createSequentialGroup()
+        							.addComponent(barebones)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(meager)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(filling)))
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addGroup(layout.createParallelGroup(Alignment.TRAILING, false)
+        						.addGroup(layout.createSequentialGroup()
+        							.addGap(7)
+        							.addComponent(paceText)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(leisurely)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(steady)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(grueling)
+        							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        							.addComponent(huntButton)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(save)
+        							.addPreferredGap(ComponentPlacement.UNRELATED)
+        							.addComponent(takeTurn)
+        							.addGap(12))
+        						.addGroup(layout.createSequentialGroup()
+        							.addGap(6)
+        							.addComponent(currentDate)
+        							.addGap(171)
+        							.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        								.addComponent(distanceToNext)
+        								.addComponent(lblDistanceToNext))
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        								.addComponent(distanceTraveled)
+        								.addComponent(distanceText))
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        								.addComponent(currentFood)
+        								.addComponent(foodText))
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        								.addComponent(moneyText)
+        								.addComponent(money))))))
+        			.addContainerGap())
         );
+        this.setLayout(layout);
     }// </editor-fold>//GEN-END:initComponents
 
     private void huntButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huntButtonActionPerformed
@@ -348,6 +376,7 @@ public class mainScreen extends javax.swing.JPanel {
     private javax.swing.JButton save;
     private javax.swing.JRadioButton steady;
     private javax.swing.JButton takeTurn;
+    private JLabel currentDate;
     // End of variables declaration//GEN-END:variables
 
     // This method returns the selected radio button in a button group
@@ -413,6 +442,9 @@ public class mainScreen extends javax.swing.JPanel {
             mapClass.takeTurn(wagon);
             
             wagon = mapClass.getWagon();
+            
+            wagon.nextDay();
+            currentDate.setText(wagon.getDateString());
             
             currLocation.setText(mapClass.getCurrLocation().getName());
             lastLocation.setText(mapClass.getLastLoc().getName());

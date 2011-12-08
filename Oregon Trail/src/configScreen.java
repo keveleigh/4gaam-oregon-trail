@@ -1,4 +1,5 @@
 
+import java.util.Date;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +13,9 @@ import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.JComboBox;
 
 /*
  * To change this template, choose Tools | Templates
@@ -65,6 +69,11 @@ public class configScreen extends javax.swing.JPanel {
 
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(600, 407));
+        
+        String[] dateStrings = { "Start in March 1, 1848", "Start in May 1, 1848", "Start in October 1, 1848" };
+        datePicker = new JComboBox(dateStrings);
+        datePicker.setBounds(210, 271, 169, 24);
+        jLayeredPane2.add(datePicker);
 
         member1.setBounds(210, 150, 120, 20);
         jLayeredPane2.add(member1, javax.swing.JLayeredPane.PALETTE_LAYER);
@@ -160,6 +169,7 @@ public class configScreen extends javax.swing.JPanel {
     private javax.swing.JLabel partyMembersLabel;
     private javax.swing.ButtonGroup profession;
     private javax.swing.JLabel professionText1;
+    private javax.swing.JComboBox datePicker;
     // End of variables declaration//GEN-END:variables
 
     public static JRadioButton getSelection(ButtonGroup group) {
@@ -224,6 +234,23 @@ public class configScreen extends javax.swing.JPanel {
 
             wagon.setCurrPace(Pace.Steady);
             wagon.setCurrRations(Rations.Meager);
+            
+            // Check dates
+            Date date = new Date();
+            date.setYear(1848);
+            date.setDate(1);
+            
+            if (datePicker.getSelectedIndex() == 0) {
+            	// March
+            	date.setMonth(3);
+            } else if (datePicker.getSelectedIndex() == 1) {
+            	// May
+            	date.setMonth(5);
+            } else if (datePicker.getSelectedIndex() == 2) {
+            	// October
+            	date.setMonth(10);
+            }
+            wagon.setDate(date);
             
             game.setWagon(wagon);
             game.setMap(new Map(wagon));
